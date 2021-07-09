@@ -12,6 +12,7 @@ import {
   USER_SIGNOUT,
   USER_UPDATE_PROFILE_FAIL,
   USER_UPDATE_PROFILE_REQUEST,
+  USER_UPDATE_PROFILE_RESET,
   USER_UPDATE_PROFILE_SUCCESS,
 } from "../constants/userConstants";
 
@@ -88,26 +89,32 @@ export const detailsUser = (userId) => async (dispatch, getState) => {
   }
 };
 
-export const updateUserProfile = (user) => async (dispatch, getState) => {
-  dispatch({ type: USER_UPDATE_PROFILE_REQUEST, payload: user });
-  const {
-    userSignin: { userInfo },
-  } = getState();
-  try {
-    const { data } = await axios.put("/api/users/profile", user, {
-      headers: { Authorization: `Bearer ${userInfo.token}` },
-    });
+export const updateUserProfile =
+  (user, props) => async (dispatch, getState) => {
+    dispatch({ type: USER_UPDATE_PROFILE_REQUEST, payload: user });
+    const {
+      userSignin: { userInfo },
+    } = getState();
+    try {
+      const { data } = await axios.put("/api/users/profile", user, {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      });
 
-    dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
-    dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
-    localStorage.setItem("userInfo", JSON.stringify(data));
-  } catch (error) {
-    dispatch({
-      type: USER_UPDATE_PROFILE_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+      dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
+      dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+
+      setTimeout(() => {
+        dispatch({ type: USER_UPDATE_PROFILE_RESET });
+        props.history.push("/");
+      }, 2000);
+    } catch (error) {
+      dispatch({
+        type: USER_UPDATE_PROFILE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };

@@ -5,7 +5,7 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
 
-function ProfileScreen() {
+function ProfileScreen(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,13 +26,13 @@ function ProfileScreen() {
 
   useEffect(() => {
     if (!user) {
-      dispatch({ type: USER_UPDATE_PROFILE_RESET });
       dispatch(detailsUser(userInfo._id));
+      dispatch({ type: USER_UPDATE_PROFILE_RESET });
     } else {
       setName(user.name);
       setEmail(user.email);
     }
-  }, [userInfo._id, user]);
+  }, [userInfo, user]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -40,12 +40,15 @@ function ProfileScreen() {
       alert("password and confirm password are not matched");
     } else {
       dispatch(
-        updateUserProfile({
-          _id: user._id,
-          name,
-          email,
-          password,
-        })
+        updateUserProfile(
+          {
+            _id: user._id,
+            name,
+            email,
+            password,
+          },
+          props
+        )
       );
     }
   };
@@ -68,7 +71,9 @@ function ProfileScreen() {
             )}
             {successUpdate && (
               <MessageBox variant="success">
-                Profile has been updated successfully
+                Profile has been updated successfully! <br />
+                <br />
+                Redirected to the Home page after 2 second
               </MessageBox>
             )}
             <div>

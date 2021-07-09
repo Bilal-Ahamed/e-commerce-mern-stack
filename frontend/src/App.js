@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import { signout } from "./action/userActions";
 import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
@@ -13,6 +13,8 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import ProductListScreen from "./screens/ProductListScreen";
+import ProductEditScreen from "./screens/ProductEditScreen";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -23,6 +25,7 @@ function App() {
 
   const signoutHandler = () => {
     dispatch(signout());
+    window.location.href = "/";
   };
 
   return (
@@ -67,11 +70,32 @@ function App() {
                 <Link to="/register">Register</Link>
               </>
             )}
+            {userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <Link to="#admin">
+                  Admin <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/">Dashboard</Link>
+                  </li>
+                  <li>
+                    <Link to="/productlist">Product List </Link>
+                  </li>
+                  <li>
+                    <Link to="/userlist">User List</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Orders</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </header>
         <main>
           <Route path="/cart/:id?" component={CartScreen}></Route>
-          <Route path="/product/:id" component={ProductScreen}></Route>
+          <Route path="/product/:id" component={ProductScreen} exact></Route>
           <Route path="/signin" component={SigninScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/shipping" component={ShippingAddressScreen}></Route>
@@ -80,6 +104,30 @@ function App() {
           <Route path="/order/:id" component={OrderScreen}></Route>
           <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
           <Route path="/profile" component={ProfileScreen}></Route>
+          {
+            <Route
+              path="/productlist"
+              exact
+              render={(props) =>
+                userInfo && userInfo.isAdmin ? (
+                  <ProductListScreen {...props}></ProductListScreen>
+                ) : (
+                  <Redirect to="/"></Redirect>
+                )
+              }
+            ></Route>
+          }
+          <Route
+            path="/product/:id/edit"
+            exact
+            render={(props) =>
+              userInfo && userInfo.isAdmin ? (
+                <ProductEditScreen {...props}></ProductEditScreen>
+              ) : (
+                <Redirect to="/signin" />
+              )
+            }
+          ></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">All right reserved</footer>
