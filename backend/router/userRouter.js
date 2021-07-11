@@ -4,7 +4,7 @@ import data from "../data.js";
 import expressAsyncHandler from "express-async-handler";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utils.js";
-import { isAuth } from "../utils.js";
+import { isAuth, isAdmin } from "../utils.js";
 
 const userRouter = express.Router();
 
@@ -62,7 +62,6 @@ userRouter.get(
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
-    console.log(user);
     if (user) {
       res.send(user);
     } else {
@@ -75,7 +74,6 @@ userRouter.put(
   "/profile",
   isAuth,
   expressAsyncHandler(async (req, res) => {
-    console.log("fired");
     const user = await User.findById(req.user._id);
     if (user) {
       user.name = req.body.name || user.name;
@@ -95,4 +93,55 @@ userRouter.put(
   })
 );
 
+// for fetching users information
+userRouter.get(
+  "/",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const users = await User.find({});
+    res.send(users);
+  })
+);
+
 export default userRouter;
+
+// for deleting a specific user from DB
+userRouter.delete(
+  "/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const user = User.findById(req.params.id);
+    if (user) {
+      const deleteUser = await user.remove();
+      res.send({ message: "Deleted Successfully", user: deleteUser });
+    } else {
+      res.status(404).send({ message: "User Not Found" });
+    }
+  })
+);
+
+// for editing  a specific user information
+userRouter.put(
+  "/:id/edit",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      user.name = req.body.name || user.name;
+      user.email = req.body.email || user.email;
+      user.isAdmin = req.body.isAdmin || user.isAdmin;
+
+      const updatedUser = await user.save();
+      res.send({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        isAdmin: updatedUser.isAdmin,
+        token: generateToken(updatedUser),
+      });
+    }
+  })
+);

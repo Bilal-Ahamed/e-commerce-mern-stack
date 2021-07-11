@@ -37,7 +37,7 @@ function ProfileScreen(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("password and confirm password are not matched");
+      alert("Password and confirm password are not matched");
     } else {
       dispatch(
         updateUserProfile(

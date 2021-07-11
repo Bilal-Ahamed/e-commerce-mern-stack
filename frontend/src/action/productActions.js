@@ -89,9 +89,6 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: PRODUCT_UPDATE_SUCCESS, payload: data });
-    setTimeout(() => {
-      dispatch({ type: PRODUCT_UPDATE_RESET, payload: data });
-    }, 2000);
   } catch (error) {
     const message =
       error.response && error.response.data.message

@@ -15,6 +15,8 @@ import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
+import UserListScreen from "./screens/UserListScreen";
+import UserEditScreen from "./screens/UserEditScreen";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -104,19 +106,17 @@ function App() {
           <Route path="/order/:id" component={OrderScreen}></Route>
           <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
           <Route path="/profile" component={ProfileScreen}></Route>
-          {
-            <Route
-              path="/productlist"
-              exact
-              render={(props) =>
-                userInfo && userInfo.isAdmin ? (
-                  <ProductListScreen {...props}></ProductListScreen>
-                ) : (
-                  <Redirect to="/"></Redirect>
-                )
-              }
-            ></Route>
-          }
+          <Route
+            path="/productlist"
+            exact
+            render={(props) =>
+              userInfo && userInfo.isAdmin ? (
+                <ProductListScreen {...props}></ProductListScreen>
+              ) : (
+                <Redirect to="/"></Redirect>
+              )
+            }
+          ></Route>
           <Route
             path="/product/:id/edit"
             exact
@@ -125,6 +125,28 @@ function App() {
                 <ProductEditScreen {...props}></ProductEditScreen>
               ) : (
                 <Redirect to="/signin" />
+              )
+            }
+          ></Route>
+          <Route
+            path="/userlist"
+            exact
+            render={(props) =>
+              userInfo && userInfo.isAdmin ? (
+                <UserListScreen {...props}></UserListScreen>
+              ) : (
+                <Redirect to="/"></Redirect>
+              )
+            }
+          ></Route>
+          <Route
+            path="/users/:id/edit"
+            exact
+            render={(props) =>
+              userInfo && userInfo.isAdmin ? (
+                <UserEditScreen {...props}></UserEditScreen>
+              ) : (
+                <Redirect to="/"></Redirect>
               )
             }
           ></Route>
