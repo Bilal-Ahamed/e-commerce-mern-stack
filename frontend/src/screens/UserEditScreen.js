@@ -41,6 +41,10 @@ function UserEditScreen(props) {
       setEmail(user.email);
       setIsAdmin(user.isAdmin);
     }
+
+    if (user) {
+      setIsAdmin(user.isAdmin);
+    }
   }, [user, successEdit, dispatch]);
 
   const submitHandler = (e) => {
@@ -91,14 +95,13 @@ function UserEditScreen(props) {
               <label htmlFor="isAdmin">Is Admin?</label>
               <select
                 id="isAdmin"
+                value={isAdmin}
                 onChange={(e) => {
-                  e.target.value === "admin"
-                    ? setIsAdmin(true)
-                    : setIsAdmin(false);
+                  setIsAdmin(e.target.value);
                 }}
               >
-                <option value="no">No</option>
-                <option value="admin">Admin</option>
+                <option value={false}>No</option>
+                <option value={true}>Admin</option>
               </select>
             </div>
             <div>

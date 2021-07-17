@@ -17,12 +17,15 @@ import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 function App() {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
+
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
+
   const dispatch = useDispatch();
 
   const signoutHandler = () => {
@@ -34,19 +37,12 @@ function App() {
     <BrowserRouter>
       <div className="grid-container">
         <header className="row">
-          <div className="">
+          <div>
             <Link className="brand" to="/">
               amazon
             </Link>
           </div>
-          <div className="">
-            <Link to="/cart">
-              Cart{" "}
-              {cartItems.length > 0 && (
-                <span className="badge">{cartItems.length}</span>
-              )}
-            </Link>
-
+          <div className="row">
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
@@ -93,6 +89,13 @@ function App() {
                 </ul>
               </div>
             )}
+
+            <Link to="/cart" className="row">
+              <ShoppingCartIcon style={{ fontSize: 28 }} />{" "}
+              {cartItems.length > 0 && (
+                <span className="badge">{cartItems.length}</span>
+              )}
+            </Link>
           </div>
         </header>
         <main>

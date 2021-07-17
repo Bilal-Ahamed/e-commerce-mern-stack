@@ -175,6 +175,7 @@ export const editUser =
   (userId, editUserInfo, props) => async (dispatch, getState) => {
     dispatch({ type: USER_EDIT_REQUEST });
     const { userInfo } = getState().userSignin;
+    console.log(editUserInfo);
     try {
       const { data } = await axios.put(
         `/api/users/${userId}/edit`,
