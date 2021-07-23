@@ -45,6 +45,8 @@ const data = {
       numReviews: 10,
       description: "high quality products",
       countInStock: 1,
+      gender: "men",
+      kids: false,
     },
     {
       name: "Adidas Fit Shirts",
@@ -56,6 +58,8 @@ const data = {
       numReviews: 10,
       description: "high quality products",
       countInStock: 2,
+      gender: "men",
+      kids: false,
     },
     {
       name: "Lacoste Free Shirt",
@@ -67,6 +71,8 @@ const data = {
       numReviews: 17,
       description: "high quality products",
       countInStock: 5,
+      gender: "men",
+      kids: false,
     },
     {
       name: "Nike Slim Pant",
@@ -78,6 +84,8 @@ const data = {
       numReviews: 55,
       description: "high quality products",
       countInStock: 20,
+      gender: "men",
+      kids: false,
     },
     {
       name: "Puma Slim Pant",
@@ -89,6 +97,8 @@ const data = {
       numReviews: 14,
       description: "high quality products",
       countInStock: 2,
+      gender: "men",
+      kids: false,
     },
     {
       name: "Panda Slime Shirt",
@@ -100,6 +110,8 @@ const data = {
       numReviews: 20,
       description: "high quality products",
       countInStock: 0,
+      gender: "men",
+      kids: false,
     },
   ],
 };

@@ -28,7 +28,7 @@ function ProductScreen(props) {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <div className="container">
+        <div className="container py-5">
           {/* <Link to="/">Back to home</Link> */}
           <div className="row row-cols-1 row-cols-md-3">
             <div className="col-md-6">

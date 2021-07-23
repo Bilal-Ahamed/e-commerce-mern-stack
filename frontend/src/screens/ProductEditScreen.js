@@ -12,8 +12,10 @@ export default function ProductEditScreen(props) {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
-  const [countInStock, setCountInStock] = useState("");
   const [brand, setBrand] = useState("");
+  const [gender, setGender] = useState("");
+  const [kids, setKids] = useState("");
+  const [countInStock, setCountInStock] = useState("");
   const [description, setDescription] = useState("");
 
   const productDetails = useSelector((state) => state.productDetails);
@@ -40,8 +42,10 @@ export default function ProductEditScreen(props) {
       setPrice(product.price);
       setImage(product.image);
       setCategory(product.category);
-      setCountInStock(product.countInStock);
       setBrand(product.brand);
+      setGender(product.gender);
+      setKids(product.kids);
+      setCountInStock(product.countInStock);
       setDescription(product.description);
     }
   }, [product, dispatch, productId, successUpdate, props.history]);
@@ -58,6 +62,8 @@ export default function ProductEditScreen(props) {
         image,
         category,
         brand,
+        gender,
+        kids,
         countInStock,
         description,
       })
@@ -175,7 +181,6 @@ export default function ProductEditScreen(props) {
                 image file is uploaded.
               </div>
             </div>
-
             <div className="mb-3">
               <label className="form-label" htmlFor="category">
                 Category
@@ -203,6 +208,41 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div className="mb-3">
+              <label className="form-label" htmlFor="gender">
+                Gender
+              </label>
+              <select
+                className="form-select"
+                id="gender"
+                value={gender}
+                onChange={(e) => {
+                  setGender(e.target.value);
+                }}
+              >
+                <option value={"men"}>Men</option>
+                <option value={"women"}>Women</option>
+                <option value={"other"}>Other</option>
+              </select>
+              <div className="form-text">Select option.</div>
+            </div>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="kids">
+                kids
+              </label>
+              <select
+                className="form-select"
+                id="kids"
+                value={kids}
+                onChange={(e) => {
+                  setKids(e.target.value);
+                }}
+              >
+                <option value={false}>No</option>
+                <option value={true}>Yes</option>
+              </select>
+              <div className="form-text">Select option.</div>
+            </div>
+            <div className="mb-3">
               <label className="form-label" htmlFor="countInStock">
                 Count In Stock
               </label>
@@ -224,6 +264,7 @@ export default function ProductEditScreen(props) {
                 id="description"
                 rows="3"
                 type="text"
+                value={description}
                 placeholder="Enter description"
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>

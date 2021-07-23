@@ -55,6 +55,8 @@ productRouter.post(
       rating: 3,
       numReviews: 3,
       description: "Edit Description",
+      gender: "men",
+      kids: false,
     });
     const createdProduct = await product.save();
     res.send({ message: "Product Created", product: createdProduct });
@@ -77,6 +79,8 @@ productRouter.put(
       productWillBeUpdated.brand = req.body.brand;
       productWillBeUpdated.countInStock = req.body.countInStock;
       productWillBeUpdated.description = req.body.description;
+      productWillBeUpdated.gender = req.body.gender;
+      productWillBeUpdated.kids = req.body.kids;
       const updatedProduct = await productWillBeUpdated.save();
       res.send({ message: "Product Updated", product: updatedProduct });
     } else {
