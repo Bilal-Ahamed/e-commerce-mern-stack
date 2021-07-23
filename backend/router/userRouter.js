@@ -8,10 +8,11 @@ import { isAuth, isAdmin } from "../utils.js";
 
 const userRouter = express.Router();
 
+// Generate User <TEST>
 userRouter.get(
   "/seed",
   expressAsyncHandler(async (req, res) => {
-    // await User.remove({});
+    await User.remove({});
     const createUsers = await User.insertMany(data.users);
     res.send({ createUsers });
   })

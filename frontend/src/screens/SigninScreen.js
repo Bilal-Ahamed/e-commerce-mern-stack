@@ -30,45 +30,61 @@ function SigninScreen(props) {
   }, [userInfo]);
 
   return (
-    <div>
-      <form className="form" onSubmit={submitHandler}>
-        <div className="">
-          <h1>Sign In</h1>
-          {loading && <LoadingBox></LoadingBox>}
-          {error && <MessageBox variant="danger">{error}</MessageBox>}
-        </div>
-        <div className="">
-          <label htmlFor="email">Email Address</label>
+    <div className="d-flex justify-content-center align-items-start py-5">
+      <form onSubmit={submitHandler}>
+        <h2 className="mb-4">Sign In</h2>
+        {loading && <LoadingBox></LoadingBox>}
+        {error && <MessageBox variant="danger">{error}</MessageBox>}
+        <div class="mb-3">
+          <label htmlFor="email" class="form-label">
+            Email address
+          </label>
           <input
             type="email"
+            class="form-control"
+            placeholder="example@email.com"
             id="email"
-            placeholder="Enter email"
             required
             onChange={(e) => setEmail(e.target.value)}
+            aria-describedby="emailHelp"
           />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
         </div>
-        <div className="">
-          <label htmlFor="password">Password</label>
+        <div class="mb-3">
+          <label for="password" class="form-label">
+            Password
+          </label>
           <input
             type="password"
+            class="form-control"
             id="password"
-            placeholder="Enter password"
             required
             onChange={(e) => setPassword(e.target.value)}
           />
+          <div class="form-text">8-20 Characters</div>
         </div>
-        <div className="">
-          <button className="primary" type="submit">
+        <div class="mb-4 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1">
+            Check me out
+          </label>
+        </div>
+        <div class="d-grid mb-4">
+          <button type="submit" class="btn btn-outline-dark ">
             Sign In
           </button>
         </div>
+
         <div className="">
-          <div className="">
-            New customer ?{" "}
-            <Link to={`/register?redirect=${redirect}`}>
-              Create your account
-            </Link>
-          </div>
+          New customer?{" "}
+          <Link
+            className="text-decoration-none"
+            to={`/register?redirect=${redirect}`}
+          >
+            Create your account
+          </Link>
         </div>
       </form>
     </div>

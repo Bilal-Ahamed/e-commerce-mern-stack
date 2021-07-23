@@ -53,11 +53,8 @@ function UserEditScreen(props) {
   };
 
   return (
-    <div>
+    <div className="d-flex py-5 justify-content-center">
       <form className="form" onSubmit={submitHandler}>
-        <div>
-          <h1>User Edit for ${userId}</h1>
-        </div>
         {loadingEdit && <LoadingBox></LoadingBox>}
         {errorEdit && <MessageBox variant="danger">{errorEdit}</MessageBox>}
         {successEdit && (
@@ -71,9 +68,21 @@ function UserEditScreen(props) {
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <>
-            <div>
-              <label htmlFor="name">Name</label>
+            <div className="mb-4">
+              <h1 className="fs-2 mb-3">Edit User</h1>
+              <span className="text-secondary fw-light d-block">
+                User Name : {user.name}
+              </span>
+              <span className="text-secondary fw-light d-block">
+                User ID : {user._id}
+              </span>
+            </div>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="name">
+                Name
+              </label>
               <input
+                className="form-control"
                 id="name"
                 type="text"
                 placeholder="Enter name"
@@ -81,19 +90,28 @@ function UserEditScreen(props) {
                 onChange={(e) => setName(e.target.value)}
               ></input>
             </div>
-            <div>
-              <label htmlFor="email">Email</label>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="email">
+                Email
+              </label>
               <input
+                className="form-control"
                 id="email"
                 type="text"
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
+              <div className="form-text">
+                Never share user's email with anyone else.
+              </div>
             </div>
-            <div>
-              <label htmlFor="isAdmin">Is Admin?</label>
+            <div className="mb-4">
+              <label className="form-label" htmlFor="isAdmin">
+                Is Admin?
+              </label>
               <select
+                className="form-select"
                 id="isAdmin"
                 value={isAdmin}
                 onChange={(e) => {
@@ -103,10 +121,12 @@ function UserEditScreen(props) {
                 <option value={false}>No</option>
                 <option value={true}>Admin</option>
               </select>
+              <div className="form-text">
+                Select option. Let the user be admin or not.
+              </div>
             </div>
-            <div>
-              <label></label>
-              <button className="primary" type="submit">
+            <div className="d-grid pt-2">
+              <button className="btn btn-outline-dark" type="submit">
                 Edit
               </button>
             </div>

@@ -54,10 +54,10 @@ function ProfileScreen(props) {
   };
 
   return (
-    <div>
+    <div className="d-flex justify-content-center py-5">
       <form className="form" onSubmit={submitHandler}>
-        <div className="">
-          <h1>User Profile</h1>
+        <div className="mb-4">
+          <h1 className="fs-2">Edit User Profile</h1>
         </div>
         {loading ? (
           <LoadingBox></LoadingBox>
@@ -76,9 +76,12 @@ function ProfileScreen(props) {
                 Redirected to the Home page after 2 second
               </MessageBox>
             )}
-            <div>
-              <label htmlFor="name">Name</label>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="name">
+                Name
+              </label>
               <input
+                className="form-control"
                 type="text"
                 id="name"
                 placeholder="Enter name"
@@ -87,10 +90,14 @@ function ProfileScreen(props) {
                   setName(e.target.value);
                 }}
               />
+              <div class="form-text">4-20 Characters</div>
             </div>
-            <div>
-              <label htmlFor="email">Email</label>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="email">
+                Email
+              </label>
               <input
+                className="form-control"
                 type="text"
                 id="email"
                 placeholder="Enter email"
@@ -99,29 +106,38 @@ function ProfileScreen(props) {
                   setEmail(e.target.value);
                 }}
               />
+              <div class="form-text">
+                We'll never share your email with anyone else.
+              </div>
             </div>
-            <div>
-              <label htmlFor="password">Password</label>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="password">
+                Password
+              </label>
               <input
+                className="form-control"
                 type="text"
                 id="password"
                 placeholder="Enter password"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div>
-              <label htmlFor="confirmPassword">Confirm password</label>
+            <div className="mb-4">
+              <label className="form-label" htmlFor="confirmPassword">
+                Confirm password
+              </label>
               <input
+                className="form-control"
                 type="text"
                 id="confirmPassword"
                 placeholder="Enter Confirm password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
-            <div className="">
+            <div className="d-grid pt-2">
               <label htmlFor=""></label>
-              <button className="primary" type="submit">
-                Update
+              <button className="btn btn-outline-dark" type="submit">
+                Edit
               </button>
             </div>
           </>

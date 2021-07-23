@@ -52,8 +52,8 @@ productRouter.post(
       category: "Edit Category",
       brand: "Sample brand",
       countInStock: 0,
-      rating: 0,
-      numReviews: 0,
+      rating: 3,
+      numReviews: 3,
       description: "Edit Description",
     });
     const createdProduct = await product.save();

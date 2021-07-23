@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { deleteUser, listUsers } from "../action/userActions";
@@ -16,6 +16,8 @@ export default function UserListScreen(props) {
     error: errorDelete,
     success: successDelete,
   } = userDelete;
+
+  const [willBeDeletedId, setWillBeDeletedId] = useState("");
 
   const userEdit = useSelector((state) => state.userEdit);
   const {
@@ -38,10 +40,8 @@ export default function UserListScreen(props) {
     }
   }, [successDelete, successEdit]);
 
-  const deleteHandler = (user) => {
-    if (window.confirm("Are you sure to delete?")) {
-      dispatch(deleteUser(user._id));
-    }
+  const deleteHandler = (userId) => {
+    dispatch(deleteUser(userId));
   };
 
   const history = useHistory();
@@ -51,9 +51,9 @@ export default function UserListScreen(props) {
   };
 
   return (
-    <div>
-      <div className="row">
-        <h1>User List</h1>
+    <div className="container overflow-scroll">
+      <div className="">
+        <h2>User List</h2>
       </div>
 
       {loadingDelete && <LoadingBox></LoadingBox>}
@@ -71,16 +71,18 @@ export default function UserListScreen(props) {
           <table className="table">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>EMAIL</th>
-                <th>IS ADMIN</th>
-                <th>ACTION</th>
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Is Admin</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
+              {users.map((user, index) => (
                 <tr key={user._id}>
+                  <th scope="row">{index + 1}</th>
                   <td>{user._id}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
@@ -88,15 +90,26 @@ export default function UserListScreen(props) {
                   <td>
                     <button
                       type="button"
-                      className="small"
+                      className="btn btn-outline-dark btn-sm"
                       onClick={() => editHandler(user._id)}
                     >
                       Edit
-                    </button>
+                    </button>{" "}
+                    {/* <button
+                      type="button"
+                      className="btn btn-outline-danger btn-sm"
+                      onClick={() => deleteHandler(user)}
+                    >
+                      Delete
+                    </button> */}
                     <button
                       type="button"
-                      className="small"
-                      onClick={() => deleteHandler(user)}
+                      class="btn btn-outline-danger btn-sm"
+                      data-bs-toggle="modal"
+                      data-bs-target="#DeleteModal"
+                      onClick={() => {
+                        setWillBeDeletedId(user._id);
+                      }}
                     >
                       Delete
                     </button>
@@ -105,6 +118,52 @@ export default function UserListScreen(props) {
               ))}
             </tbody>
           </table>
+          {/* Modal */}
+          <div
+            class="modal fade"
+            id="DeleteModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-danger" id="exampleModalLabel">
+                    User Delete
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body text-secondary">
+                  This action is irreversible action. <br /> Are you sure to
+                  delete this user from the database?
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    data-bs-dismiss="modal"
+                    class="btn btn-outline-danger"
+                    onClick={() => deleteHandler(willBeDeletedId)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Modal end */}
         </>
       )}
     </div>

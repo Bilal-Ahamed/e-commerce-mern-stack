@@ -36,36 +36,52 @@ function RegisterScreen(props) {
   }, [userInfo]);
 
   return (
-    <div>
+    <div className="d-flex justify-content-center py-5">
       <form className="form" onSubmit={submitHandler}>
         <div className="">
-          <h1>Register</h1>
+          <h1 className="mb-4">Register</h1>
           {loading && <LoadingBox></LoadingBox>}
           {error && <MessageBox variant="danger">{error}</MessageBox>}
         </div>
-        <div className="">
-          <label htmlFor="name">Name</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="name">
+            Name
+          </label>
           <input
+            className="form-control"
             type="text"
             id="name"
             placeholder="Enter name"
             required
             onChange={(e) => setName(e.target.value)}
           />
+          <div id="emailHelp" class="form-text">
+            4-20 Characters
+          </div>
         </div>
-        <div className="">
-          <label htmlFor="email">Email Address</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="email">
+            Email Address
+          </label>
           <input
+            className="form-control"
             type="email"
             id="email"
-            placeholder="Enter email"
+            placeholder="example@email.com"
             required
             onChange={(e) => setEmail(e.target.value)}
+            aria-describedby="emailHelp"
           />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
         </div>
-        <div className="">
-          <label htmlFor="password">Password</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="password">
+            Password
+          </label>
           <input
+            className="form-control"
             type="password"
             id="password"
             placeholder="Enter password"
@@ -73,9 +89,12 @@ function RegisterScreen(props) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className="">
-          <label htmlFor="confirmPassword">Confirm Password</label>
+        <div className="mb-4">
+          <label className="form-label" htmlFor="confirmPassword">
+            Confirm Password
+          </label>
           <input
+            className="form-control"
             type="password"
             id="confirmPassword"
             placeholder="Enter confirm password"
@@ -83,16 +102,20 @@ function RegisterScreen(props) {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        <div className="">
-          <button className="primary" type="submit">
+        <div className="d-grid mb-4 pt-2">
+          <button className="btn btn-outline-dark" type="submit">
             Register
           </button>
         </div>
-        <div className="">
-          <div className="">
-            Already have an account?{" "}
-            <Link to={`/signin?redirect=${redirect}`}>Go to sign in</Link>
-          </div>
+
+        <div className="mt-2">
+          Already have an account?{" "}
+          <Link
+            className="text-decoration-none"
+            to={`/signin?redirect=${redirect}`}
+          >
+            Go to Sign In
+          </Link>
         </div>
       </form>
     </div>

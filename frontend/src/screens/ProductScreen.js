@@ -28,18 +28,24 @@ function ProductScreen(props) {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <div>
-          <Link to="/">Back to result</Link>
-          <div className="row top">
-            <div className="col-2">
-              <div className="imgbox">
-                <img className="large" src={product.image} alt={product.name} />
-              </div>
+        <div className="container">
+          {/* <Link to="/">Back to home</Link> */}
+          <div className="row row-cols-1 row-cols-md-3">
+            <div className="col-md-6">
+              <img
+                // style={{ maxWidth: 300 }}
+                className="img-fluid"
+                src={product.image}
+                alt={product.name}
+              />
             </div>
-            <div className="col-1">
+            <div className="col-md-6">
               <ul>
                 <li>
-                  <h1>{product.name}</h1>
+                  <h2>{product.name}</h2>
+                </li>
+                <li className="mb-3">
+                  <h6>{product.brand}</h6>
                 </li>
                 <li>
                   <Rating
@@ -47,66 +53,59 @@ function ProductScreen(props) {
                     numReviews={product.numReviews}
                   ></Rating>
                 </li>
-                <li>Price : ${product.price}</li>
-                <li>
-                  Description : <p>{product.description}</p>
+                <li className="mb-3 text-danger fs-5">
+                  ${Number(product.price).toFixed(2)}
+                </li>
+                <li className="text-secondary fw-light">
+                  <p>{product.description}</p>
                 </li>
               </ul>
-            </div>
-            <div className="col-1">
-              <div className="card card-body">
-                <ul>
-                  <li>
-                    <div className="row">
-                      <div>Price</div>
-                      <div className="price">${product.price}</div>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="row">
-                      <div>Status</div>
-                      <div>
-                        {product.countInStock > 0 ? (
-                          <span className="success">In Stock</span>
-                        ) : (
-                          <span className="danger">Unavailable</span>
-                        )}
-                      </div>
-                    </div>
-                  </li>
-                  {product.countInStock > 0 && (
-                    <>
-                      <li>
-                        <div className="row">
-                          <div>Qty</div>
-                          <div className="">
-                            <select
-                              value={qty}
-                              onChange={(e) => setQty(e.target.value)}
-                            >
-                              {[...Array(product.countInStock).keys()].map(
-                                (item) => (
-                                  <option key={item + 1} value={item + 1}>
-                                    {item + 1}
-                                  </option>
-                                )
-                              )}
-                            </select>
-                          </div>
+
+              <ul>
+                <li className="mb-2">
+                  <h5 className="mb-1">Status</h5>
+                  <div>
+                    {product.countInStock > 0 ? (
+                      <span className="text-success fs-5">In Stock</span>
+                    ) : (
+                      <span className="text-danger fs-5">Unavailable</span>
+                    )}
+                  </div>
+                </li>
+                {product.countInStock > 0 && (
+                  <>
+                    <li className="mb-4">
+                      <div className="">
+                        <h5 className="mb-2">Qty</h5>
+                        <div className="">
+                          <select
+                            style={{ width: 70 }}
+                            className="form-select"
+                            value={qty}
+                            onChange={(e) => setQty(e.target.value)}
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (item) => (
+                                <option key={item + 1} value={item + 1}>
+                                  {item + 1}
+                                </option>
+                              )
+                            )}
+                          </select>
                         </div>
-                      </li>
-                      <li>
-                        <button
-                          className="primary block"
-                          onClick={addToCartHandler}
-                        >
-                          Add to cart
-                        </button>
-                      </li>
-                    </>
-                  )}
-                </ul>
-              </div>
+                      </div>
+                    </li>
+                    <li>
+                      <button
+                        className="btn btn-dark"
+                        onClick={addToCartHandler}
+                      >
+                        Add to cart
+                      </button>
+                    </li>
+                  </>
+                )}
+              </ul>
             </div>
           </div>
         </div>

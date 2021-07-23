@@ -49,6 +49,7 @@ export default function ProductEditScreen(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     // TODO: dispatch update product
+
     dispatch(
       updateProduct({
         _id: productId,
@@ -90,11 +91,8 @@ export default function ProductEditScreen(props) {
   };
 
   return (
-    <div>
+    <div className="container d-flex justify-content-center py-5">
       <form className="form" onSubmit={submitHandler}>
-        <div>
-          <h1>Edit Product {productId}</h1>
-        </div>
         {loadingUpdate && <LoadingBox></LoadingBox>}
         {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
         {loading ? (
@@ -103,9 +101,21 @@ export default function ProductEditScreen(props) {
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <>
-            <div>
-              <label htmlFor="name">Name</label>
+            <div className="mb-4">
+              <h1>Edit Product </h1>
+              <span className="text-secondary d-block fw-light">
+                Product Name : {product.name}
+              </span>
+              <span className="text-secondary d-block fw-light">
+                Product ID : {product._id}
+              </span>
+            </div>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="name">
+                Name
+              </label>
               <input
+                className="form-control"
                 id="name"
                 type="text"
                 placeholder="Enter name"
@@ -113,29 +123,26 @@ export default function ProductEditScreen(props) {
                 onChange={(e) => setName(e.target.value)}
               ></input>
             </div>
-            <div>
-              <label htmlFor="price">Price</label>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="price">
+                Price
+              </label>
               <input
+                className="form-control"
                 id="price"
                 type="text"
                 placeholder="Enter price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               ></input>
+              <div className="form-text">Unit : US Dollar</div>
             </div>
-            <div>
-              <label htmlFor="image">Image File Location</label>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="imageFile">
+                Image File
+              </label>
               <input
-                id="image"
-                type="text"
-                placeholder="Enter image"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="imageFile">Image File</label>
-              <input
+                className="form-control"
                 type="file"
                 id="imageFile"
                 label="Choose Image"
@@ -145,10 +152,36 @@ export default function ProductEditScreen(props) {
               {errorUpload && (
                 <MessageBox variant="danger">{errorUpload}</MessageBox>
               )}
+              {setImage && (
+                <div className="d-flex mx-auto mt-4" style={{ width: 300 }}>
+                  <img className="img-thumbnail" src={image} alt="" />
+                </div>
+              )}
             </div>
-            <div>
-              <label htmlFor="category">Category</label>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="image">
+                Image File Location
+              </label>
               <input
+                className="form-control"
+                id="image"
+                type="text"
+                placeholder="Enter image"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              ></input>
+              <div className="form-text">
+                Image file location will be decided automatically <br /> once
+                image file is uploaded.
+              </div>
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label" htmlFor="category">
+                Category
+              </label>
+              <input
+                className="form-control"
                 id="category"
                 type="text"
                 placeholder="Enter category"
@@ -156,9 +189,12 @@ export default function ProductEditScreen(props) {
                 onChange={(e) => setCategory(e.target.value)}
               ></input>
             </div>
-            <div>
-              <label htmlFor="brand">Brand</label>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="brand">
+                Brand
+              </label>
               <input
+                className="form-control"
                 id="brand"
                 type="text"
                 placeholder="Enter brand"
@@ -166,9 +202,12 @@ export default function ProductEditScreen(props) {
                 onChange={(e) => setBrand(e.target.value)}
               ></input>
             </div>
-            <div>
-              <label htmlFor="countInStock">Count In Stock</label>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="countInStock">
+                Count In Stock
+              </label>
               <input
+                className="form-control"
                 id="countInStock"
                 type="text"
                 placeholder="Enter countInStock"
@@ -176,21 +215,23 @@ export default function ProductEditScreen(props) {
                 onChange={(e) => setCountInStock(e.target.value)}
               ></input>
             </div>
-            <div>
-              <label htmlFor="description">Description</label>
+            <div className="mb-4">
+              <label className="form-label" htmlFor="description">
+                Description
+              </label>
               <textarea
+                className="form-control"
                 id="description"
                 rows="3"
                 type="text"
                 placeholder="Enter description"
-                value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>
+              <div className="form-text">Product specification</div>
             </div>
-            <div>
-              <label></label>
-              <button className="primary" type="submit">
-                Update
+            <div className="d-gird pt-2 d-grid">
+              <button className="btn btn-outline-dark" type="submit">
+                Edit
               </button>
             </div>
           </>

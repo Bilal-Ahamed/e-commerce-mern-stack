@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import {
@@ -32,6 +32,8 @@ export default function ProductListScreen(props) {
     success: successDelete,
   } = productDelete;
 
+  const [willBeDeletedId, setWillBeDeletedId] = useState("");
+
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
@@ -51,10 +53,8 @@ export default function ProductListScreen(props) {
     // );
   }, [createdProduct, productDelete, dispatch, successCreate, userInfo._id]);
 
-  const deleteHandler = (product) => {
-    if (window.confirm("Are you sure to delete?")) {
-      dispatch(deleteProduct(product._id));
-    }
+  const deleteHandler = (productId) => {
+    dispatch(deleteProduct(productId));
   };
 
   const history = useHistory();
@@ -68,14 +68,7 @@ export default function ProductListScreen(props) {
   };
 
   return (
-    <div>
-      <div className="row">
-        <h1>Products</h1>
-        <button type="button" className="primary" onClick={createHandler}>
-          Create Product
-        </button>
-      </div>
-
+    <div className="container overflow-scroll py-5">
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
 
@@ -87,37 +80,58 @@ export default function ProductListScreen(props) {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
+          <div className="d-flex mb-4">
+            <h2 className="">Products</h2>
+            <button
+              type="button"
+              className="btn btn-outline-dark btn-sm ms-auto me-3"
+              onClick={createHandler}
+            >
+              Add Product
+            </button>
+          </div>
           <table className="table">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>PRICE</th>
-                <th>CATEGORY</th>
-                <th>BRAND</th>
-                <th>ACTIONS</th>
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">CATEGORY</th>
+                <th scope="col">BRAND</th>
+                <th scope="col">ACTIONS</th>
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
+              {products.map((product, index) => (
                 <tr key={product._id}>
+                  <th scope="row">{index + 1}</th>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
-                  <td>{product.price}</td>
+                  <td>${Number(product.price).toFixed(2)}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>
                     <button
                       type="button"
-                      className="small"
+                      className="btn btn-outline-dark btn-sm"
                       onClick={() => editHandler(product._id)}
                     >
                       Edit
-                    </button>
+                    </button>{" "}
+                    {/* <button
+                      type="button"
+                      className="btn btn-outline-danger btn-sm"
+                      onClick={() => deleteHandler(product)}
+                    >
+                      Delete
+                    </button> */}
                     <button
                       type="button"
-                      className="small"
-                      onClick={() => deleteHandler(product)}
+                      class="btn btn-outline-danger btn-sm"
+                      data-bs-toggle="modal"
+                      data-bs-target="#DeleteModal"
+                      onClick={() => setWillBeDeletedId(product._id)}
                     >
                       Delete
                     </button>
@@ -126,6 +140,52 @@ export default function ProductListScreen(props) {
               ))}
             </tbody>
           </table>
+          {/* Modal */}
+          <div
+            class="modal fade"
+            id="DeleteModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-danger" id="exampleModalLabel">
+                    Product Delete
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body text-secondary">
+                  This action is irreversible action. <br /> Are you sure to
+                  delete this product from the database?
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    data-bs-dismiss="modal"
+                    class="btn btn-outline-danger"
+                    onClick={() => deleteHandler(willBeDeletedId)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Modal end */}
         </>
       )}
     </div>
