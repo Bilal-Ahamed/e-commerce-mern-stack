@@ -5,6 +5,7 @@ import userRouter from "./router/userRouter.js";
 import productRouter from "./router/productRouter.js";
 import orderRouter from "./router/orderRouter.js";
 import uploadRouter from "./router/uploadRouter.js";
+import classificationRouter from "./router/classification.js";
 
 const app = express();
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use("/api/products", productRouter);
 app.use("/api/placeorder", orderRouter);
 app.use("/api/order", orderRouter);
 app.use("/api/uploads", uploadRouter);
+app.use("/api/classification", classificationRouter);
 app.use("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });

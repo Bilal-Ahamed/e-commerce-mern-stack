@@ -18,6 +18,7 @@ import ProductEditScreen from "./screens/ProductEditScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import Classification from "./screens/Classification";
 import Footer from "./components/Footer";
 
 function App() {
@@ -38,15 +39,15 @@ function App() {
     <BrowserRouter>
       {/* Nav */}
       <nav
-        class="navbar navbar-expand-lg navbar-light border-bottom border-secondary border-bottom-2 sticky-top"
+        className="navbar navbar-expand-lg navbar-light border-bottom border-secondary border-bottom-2 sticky-top"
         style={{ backgroundColor: "white" }}
       >
-        <div class="container">
+        <div className="container">
           <Link className="navbar-brand" to="/">
-            <img className="brand_logo" src="images/h&m_logo.png" alt="" />
+            <img className="brand_logo" src="/images/h&m_logo.png" alt="" />
           </Link>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -54,24 +55,29 @@ function App() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item">
                 <Link className="nav-link" to="/">
                   Home
                 </Link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Products
-                </a>
+              <li className="nav-item">
+                <Link className="nav-link" to="/classification/men">
+                  Men
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/classification/women">
+                  Women
+                </Link>
               </li>
               {userInfo ? (
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
+                <li className="nav-item dropdown">
+                  <Link
+                    className="nav-link dropdown-toggle"
                     href="#"
                     id="navbarDropdown"
                     role="button"
@@ -79,8 +85,11 @@ function App() {
                     aria-expanded="false"
                   >
                     {userInfo.name}
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  </Link>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdown"
+                  >
                     <li>
                       <Link className="dropdown-item" to="/profile">
                         User Profile
@@ -92,7 +101,7 @@ function App() {
                       </Link>
                     </li>
                     <li>
-                      <hr class="dropdown-divider" />
+                      <hr className="dropdown-divider" />
                     </li>
                     <li>
                       <Link
@@ -107,13 +116,13 @@ function App() {
                 </li>
               ) : (
                 <>
-                  <li class="nav-item">
-                    <Link class="nav-link" to="/signin">
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/signin">
                       Sign In
                     </Link>
                   </li>
-                  <li class="nav-item">
-                    <Link class="nav-link" to="/register">
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/register">
                       Register
                     </Link>
                   </li>
@@ -121,9 +130,9 @@ function App() {
               )}
 
               {userInfo && userInfo.isAdmin && (
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
+                <li className="nav-item dropdown">
+                  <Link
+                    className="nav-link dropdown-toggle"
                     href="#"
                     id="navbarDropdown"
                     role="button"
@@ -131,8 +140,11 @@ function App() {
                     aria-expanded="false"
                   >
                     Admin
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  </Link>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdown"
+                  >
                     <li>
                       <Link className="dropdown-item" to="/dashboard">
                         Dashboard
@@ -164,7 +176,7 @@ function App() {
                 </li>
               )}
 
-              <li class="nav-item">
+              <li className="nav-item">
                 <Link className="nav-link cart" to="/cart">
                   <ShoppingCartIcon style={{ fontSize: 28 }} />
 
@@ -191,6 +203,16 @@ function App() {
         <Route path="/order/:id" component={OrderScreen}></Route>
         <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
         <Route path="/profile" component={ProfileScreen}></Route>
+        <Route
+          path="/classification/:gender"
+          exact
+          component={Classification}
+        ></Route>
+        <Route
+          path="/classification/:gender/:category"
+          exact
+          component={Classification}
+        ></Route>
         <Route
           path="/productlist"
           exact

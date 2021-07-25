@@ -35,44 +35,48 @@ function SigninScreen(props) {
         <h2 className="mb-4">Sign In</h2>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
-        <div class="mb-3">
-          <label htmlFor="email" class="form-label">
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
             Email address
           </label>
           <input
             type="email"
-            class="form-control"
+            className="form-control"
             placeholder="example@email.com"
             id="email"
             required
             onChange={(e) => setEmail(e.target.value)}
             aria-describedby="emailHelp"
           />
-          <div id="emailHelp" class="form-text">
+          <div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
           </div>
         </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">
+        <div className="mb-3">
+          <label for="password" className="form-label">
             Password
           </label>
           <input
             type="password"
-            class="form-control"
+            className="form-control"
             id="password"
             required
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div class="form-text">8-20 Characters</div>
+          <div className="form-text">8-20 Characters</div>
         </div>
-        <div class="mb-4 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">
+        <div className="mb-4 form-check">
+          <input
+            type="checkbox"
+            className="form-check-input"
+            id="exampleCheck1"
+          />
+          <label className="form-check-label" for="exampleCheck1">
             Check me out
           </label>
         </div>
-        <div class="d-grid mb-4">
-          <button type="submit" class="btn btn-outline-dark ">
+        <div className="d-grid mb-4">
+          <button type="submit" className="btn btn-outline-dark ">
             Sign In
           </button>
         </div>

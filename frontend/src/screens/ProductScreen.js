@@ -30,8 +30,8 @@ function ProductScreen(props) {
       ) : (
         <div className="container py-5">
           {/* <Link to="/">Back to home</Link> */}
-          <div className="row row-cols-1 row-cols-md-3">
-            <div className="col-md-6">
+          <div className="row row-cols-1 row-cols-md-2">
+            <div className="col-md-6 text-center mb-3">
               <img
                 // style={{ maxWidth: 300 }}
                 className="img-fluid"
@@ -97,10 +97,10 @@ function ProductScreen(props) {
                     </li>
                     <li>
                       <button
-                        className="btn btn-dark"
+                        className="btn btn-dark btn-lg"
                         onClick={addToCartHandler}
                       >
-                        Add to cart
+                        ADD TO CART
                       </button>
                     </li>
                   </>

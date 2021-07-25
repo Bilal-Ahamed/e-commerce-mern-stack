@@ -128,7 +128,7 @@ export default function ProductListScreen(props) {
                     </button> */}
                     <button
                       type="button"
-                      class="btn btn-outline-danger btn-sm"
+                      className="btn btn-outline-danger btn-sm"
                       data-bs-toggle="modal"
                       data-bs-target="#DeleteModal"
                       onClick={() => setWillBeDeletedId(product._id)}
@@ -142,33 +142,36 @@ export default function ProductListScreen(props) {
           </table>
           {/* Modal */}
           <div
-            class="modal fade"
+            className="modal fade"
             id="DeleteModal"
             tabindex="-1"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-danger" id="exampleModalLabel">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5
+                    className="modal-title text-danger"
+                    id="exampleModalLabel"
+                  >
                     Product Delete
                   </h5>
                   <button
                     type="button"
-                    class="btn-close"
+                    className="btn-close"
                     data-bs-dismiss="modal"
                     aria-label="Close"
                   ></button>
                 </div>
-                <div class="modal-body text-secondary">
+                <div className="modal-body text-secondary">
                   This action is irreversible action. <br /> Are you sure to
                   delete this product from the database?
                 </div>
-                <div class="modal-footer">
+                <div className="modal-footer">
                   <button
                     type="button"
-                    class="btn btn-outline-secondary"
+                    className="btn btn-outline-secondary"
                     data-bs-dismiss="modal"
                   >
                     Close
@@ -176,7 +179,7 @@ export default function ProductListScreen(props) {
                   <button
                     type="button"
                     data-bs-dismiss="modal"
-                    class="btn btn-outline-danger"
+                    className="btn btn-outline-danger"
                     onClick={() => deleteHandler(willBeDeletedId)}
                   >
                     Delete

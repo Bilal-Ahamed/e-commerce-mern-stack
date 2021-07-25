@@ -104,4 +104,32 @@ productRouter.delete(
   })
 );
 
+// test rest api for specific routing point
+// /api/users/category/:ee:dd
+productRouter.get(
+  "//:gender",
+  expressAsyncHandler(async (req, res) => {
+    const products = await Product.find({
+      gender: req.params.gender,
+      category: req.params.category,
+    });
+
+    res.send(products);
+  })
+);
+
+// test rest api routing point
+// /api/users/category/:ee:dd
+productRouter.get(
+  "//:gender/:category",
+  expressAsyncHandler(async (req, res) => {
+    const products = await Product.find({
+      gender: req.params.gender,
+      category: req.params.category,
+    });
+
+    res.send(products);
+  })
+);
+
 export default productRouter;

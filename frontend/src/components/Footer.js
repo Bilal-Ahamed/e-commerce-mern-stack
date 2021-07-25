@@ -3,10 +3,10 @@ import React from "react";
 function Footer() {
   return (
     <React.Fragment>
-      <footer className="bg-light mt-auto pt-5 pb-4 fw-light">
+      <footer className=" mt-auto pt-5 pb-4 fw-light">
         <div className="container">
-          <div class="row row-cols-1 row-cols-md-4 gap-4 gap-md-0 mb-5">
-            <div class="col pb-5">
+          <div className="row row-cols-1 row-cols-md-4 gap-4 gap-md-0 mb-5">
+            <div className="col pb-5">
               <ul>
                 <li className="">
                   <img
@@ -17,7 +17,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div class="col">
+            <div className="col">
               <ul>
                 <h6>Customer Service</h6>
                 <li className="text-secondary">Contact Us</li>
@@ -26,7 +26,7 @@ function Footer() {
                 <li className="text-secondary">Contact Us</li>
               </ul>
             </div>
-            <div class="col">
+            <div className="col">
               <ul>
                 <h6>Terms Of Services</h6>
                 <li className="text-secondary">Contact Us</li>
@@ -35,7 +35,7 @@ function Footer() {
                 <li className="text-secondary">Contact Us</li>
               </ul>
             </div>
-            <div class="col">
+            <div className="col">
               <ul>
                 <h6>Products</h6>
                 <li className="text-secondary">Contact Us</li>

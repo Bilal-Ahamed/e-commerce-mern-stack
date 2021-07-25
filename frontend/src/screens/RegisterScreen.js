@@ -55,7 +55,7 @@ function RegisterScreen(props) {
             required
             onChange={(e) => setName(e.target.value)}
           />
-          <div id="emailHelp" class="form-text">
+          <div id="emailHelp" className="form-text">
             4-20 Characters
           </div>
         </div>
@@ -72,7 +72,7 @@ function RegisterScreen(props) {
             onChange={(e) => setEmail(e.target.value)}
             aria-describedby="emailHelp"
           />
-          <div id="emailHelp" class="form-text">
+          <div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
           </div>
         </div>

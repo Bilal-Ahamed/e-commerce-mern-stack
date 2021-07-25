@@ -29,10 +29,10 @@ function CartScreen(props) {
   };
 
   return (
-    <div className="container">
+    <div className="container py-5">
       <h1 className="mb-5">Shopping Cart</h1>
-      <div className="row row-cols-1 row-cols-md-2">
-        <div className="col col-9">
+      <div className="row row-cols-md-2">
+        <div className="col col-12 col-md-9 overflow-scroll">
           {cartItems.length === 0 ? (
             <MessageBox>
               Cart is empty. <Link to="/">Go Shopping</Link>
@@ -49,7 +49,7 @@ function CartScreen(props) {
                         alt={item.name}
                       />
                     </div>
-                    <div className="col-3">
+                    <div className="col-2 me-2">
                       <Link
                         className="text-decoration-none"
                         to={`/product/${item.product}`}
@@ -60,7 +60,7 @@ function CartScreen(props) {
                     <div className="col-2">
                       <select
                         className="form-select"
-                        style={{ width: 70 }}
+                        style={{ width: 67 }}
                         value={item.qty}
                         onChange={(e) =>
                           dispatch(
@@ -75,7 +75,7 @@ function CartScreen(props) {
                         ))}
                       </select>
                     </div>
-                    <div className="col-2 fs-5">
+                    <div className="col-2 fs-6">
                       ${Number(item.price).toFixed(2)}
                     </div>
                     <div className="col-2">
@@ -93,18 +93,19 @@ function CartScreen(props) {
             </ul>
           )}
         </div>
-        <div className="col col-3">
+        <div className="col col-6 col-md-3">
           <ul>
-            <li className="mb-4">
-              <h4>
-                Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
+            <li className="mb-3">
+              <h5 className="fw-light">
+                Subtotal <br /> ({cartItems.reduce((a, c) => a + c.qty, 0)}{" "}
+                items) : $
                 {Number(
                   cartItems.reduce(
                     (a, c) => a + Number(c.price).toFixed(2) * c.qty,
                     0
                   )
                 ).toFixed(2)}
-              </h4>
+              </h5>
             </li>
             <li>
               <button

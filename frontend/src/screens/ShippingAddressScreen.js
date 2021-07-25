@@ -30,73 +30,92 @@ function ShippingAddressScreen(props) {
   };
 
   return (
-    <div>
+    <div className="container pt-4 pb-5">
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <form className="form" onSubmit={submitHandler}>
-        <div>
-          <h1>Shipping</h1>
-        </div>
-        <div className="">
-          <label htmlFor="fullName">Full Name</label>
-          <input
-            type="text"
-            id="fullName"
-            value={fullName}
-            placeholder="Enter full name"
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="">
-          <label htmlFor="address">Address</label>
-          <input
-            type="text"
-            id="address"
-            value={address}
-            placeholder="Enter address"
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-        </div>
-        <div className="">
-          <label htmlFor="city">City</label>
-          <input
-            type="text"
-            id="city"
-            value={city}
-            placeholder="Enter city"
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-        </div>
-        <div className="">
-          <label htmlFor="postal code">Postal Code</label>
-          <input
-            type="text"
-            id="postal code"
-            value={postalCode}
-            placeholder="Enter postal code"
-            onChange={(e) => setPostalCode(e.target.value)}
-            required
-          />
-        </div>
-        <div className="">
-          <label htmlFor="country">Country</label>
-          <input
-            type="text"
-            id="country"
-            value={country}
-            placeholder="Enter country"
-            onChange={(e) => setCountry(e.target.value)}
-            required
-          />
-        </div>
-        <div className="">
-          <button className="primary" type="submit">
-            Continue
-          </button>
-        </div>
-      </form>
+      <div className="d-flex justify-content-center align-items-center">
+        <form className="form" onSubmit={submitHandler}>
+          <h1 className="mb-4">Shipping</h1>
+
+          <div className="mb-3">
+            <label className="form-label" htmlFor="fullName">
+              Full Name
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              className="form-control"
+              value={fullName}
+              placeholder="Enter full name"
+              onChange={(e) => setFullName(e.target.value)}
+              required
+            />
+
+            <div class="form-text">Fill in your first name and last name.</div>
+          </div>
+          <div className="mb-3">
+            <label className="form-label" htmlFor="address">
+              Address
+            </label>
+            <input
+              type="text"
+              id="address"
+              className="form-control"
+              value={address}
+              placeholder="Enter address"
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+            <div class="form-text">Fill in your Address exactly.</div>
+          </div>
+          <div className="mb-3">
+            <label className="form-label" htmlFor="city">
+              City
+            </label>
+            <input
+              type="text"
+              id="city"
+              className="form-control"
+              value={city}
+              placeholder="Enter city"
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label" htmlFor="postal code">
+              Postal Code
+            </label>
+            <input
+              type="text"
+              id="postal code"
+              className="form-control"
+              value={postalCode}
+              placeholder="Enter postal code"
+              onChange={(e) => setPostalCode(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-5">
+            <label className="form-label" htmlFor="country">
+              Country
+            </label>
+            <input
+              type="text"
+              id="country"
+              className="form-control"
+              value={country}
+              placeholder="Enter country"
+              onChange={(e) => setCountry(e.target.value)}
+              required
+            />
+          </div>
+          <div className="d-grid">
+            <button className="btn btn-outline-dark" type="submit">
+              Continue to payment
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

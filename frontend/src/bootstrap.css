@@ -4,15 +4,57 @@
   min-height: 100vh;
 }
 
+#root {
+  background-color: #fffefd;
+}
+
+footer {
+  background-color: #f5f5f5;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #283333;
+}
+
+a:hover {
+  color: #ee342d;
+}
+
 .brand_logo {
   width: 4rem;
   height: auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-steps > div {
+  border-top: 0.2rem #c0d0d0 solid;
+  color: #c0c0c0;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.checkout-steps > div.active {
+  border-top-color: #f72f28;
+  color: #f72f28;
+}
+
+@media screen and (max-width: 500px) {
+  .checkout-steps > div {
+    font-size: 0.7rem;
+  }
 }
 
 .cart {
