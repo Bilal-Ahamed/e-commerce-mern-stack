@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromFavorite } from "../action/favoriteActions";
+import { clearAllFavorite } from "../action/favoriteActions";
 import { Link } from "react-router-dom";
 import MessageBox from "../components/MessageBox";
 import Product from "../components/Product";
@@ -10,8 +10,8 @@ function FavoritesScreen(props) {
   const { favoriteItems } = favorite;
   const dispatch = useDispatch();
 
-  const removeFromFavoriteHandler = (id) => {
-    dispatch(removeFromFavorite(id));
+  const clearAll = () => {
+    dispatch(clearAllFavorite());
   };
 
   const browseNow = () => {
@@ -20,7 +20,10 @@ function FavoritesScreen(props) {
 
   return (
     <div className="container my-5 p-5 text-center">
-      <h1 className="mb-4">Favorites</h1>
+      <div className="mb-5">
+        <h1 className="">Favorites</h1>
+      </div>
+
       {favoriteItems.length === 0 ? (
         <div className="d-flex flex-column justify-content-center align-items-center mb-5">
           <h6 className="fs-5 mb-3">SAVE YOUR FAVORITE ITEMS</h6>
@@ -33,11 +36,18 @@ function FavoritesScreen(props) {
           </button>
         </div>
       ) : (
-        <div className="row row-cols-2 row-cols-md-3">
-          {favoriteItems.map((favorite) => (
-            <Product key={favorite._id} product={favorite} />
-          ))}
-        </div>
+        <>
+          <div className="row row-cols-2 row-cols-md-3">
+            {favoriteItems.map((favorite) => (
+              <Product key={favorite._id} product={favorite} />
+            ))}
+          </div>
+          <div className="d-flex justify-content-center mb-5">
+            <button className="btn btn-outline-dark" onClick={clearAll}>
+              Clear All Favorites
+            </button>
+          </div>
+        </>
       )}
     </div>
   );

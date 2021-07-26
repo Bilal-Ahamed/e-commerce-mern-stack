@@ -1,5 +1,6 @@
 import {
   FAVORITE_ADD_ITEM,
+  FAVORITE_CLEAR_ALL,
   FAVORITE_REMOVE_ITEM,
 } from "../constants/favoriteConstants";
 
@@ -16,6 +17,9 @@ export const favoriteReducer = (state = { favoriteItems: [] }, action) => {
           (el) => el._id !== action.payload
         ),
       };
+
+    case FAVORITE_CLEAR_ALL:
+      return { ...state, favoriteItems: [] };
 
     default:
       return state;

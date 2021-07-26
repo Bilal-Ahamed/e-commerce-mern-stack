@@ -2,15 +2,17 @@
 
 1. 데스크톱
 
-![Alt text](/frontend/public/images/example_0.png)
+![Alt text](/frontend/public/images/example_desktop_0.png)
 
----
+![Alt text](/frontend/public/images/example_desktop_1.png)
 
-![Alt text](/frontend/public/images/example_1.png)
+![Alt text](/frontend/public/images/example_desktop_2.png)
 
 2. 모바일(구글 크롬 개발자 도구에서의 모바일 iPhone X setting)
 
-![Alt text](/frontend/public/images/example_2.png)
+![Alt text](/frontend/public/images/example_mobile_0.png)
+
+![Alt text](/frontend/public/images/example_mobile_1.png)
 
 # Getting Started with Create React App
 

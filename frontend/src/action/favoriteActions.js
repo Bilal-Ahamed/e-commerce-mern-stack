@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   FAVORITE_ADD_ITEM,
+  FAVORITE_CLEAR_ALL,
   FAVORITE_REMOVE_ITEM,
 } from "../constants/favoriteConstants";
 
@@ -24,10 +25,15 @@ export const addToFavorite = (productId) => async (dispatch, getState) => {
   );
 };
 
-export const removeFromFavorite = (productId) => async (dispatch, getState) => {
+export const removeFromFavorite = (productId) => (dispatch, getState) => {
   dispatch({ type: FAVORITE_REMOVE_ITEM, payload: productId });
   localStorage.setItem(
     "favoriteItems",
     JSON.stringify(getState().favorite.favoriteItems)
   );
+};
+
+export const clearAllFavorite = () => (dispatch) => {
+  dispatch({ type: FAVORITE_CLEAR_ALL });
+  localStorage.setItem("favorite", JSON.stringify([]));
 };
