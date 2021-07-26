@@ -1,28 +1,30 @@
 # E-Commerce Website Using MERN Stack
 
-다음은 프로젝트의 스크린 이미지 입니다.
+Below is the screen Image for this project.
 
 ## Desktop
 
-### 1. Home
+Screen for desktop resolution.
+
+### `Home`
 
 ![Alt text](/frontend/public/images/example_desktop_0.png)
 
-### 2. Product
+### `Product`
 
 ![Alt text](/frontend/public/images/example_desktop_1.png)
 
-### 3. User List
+### `User List`
 
 ![Alt text](/frontend/public/images/example_desktop_2.png)
 
 ## Mobile (Resolution for iPhone X)
 
-### 1. Home
+### `Home`
 
 ![Alt text](/frontend/public/images/example_mobile_0.png)
 
-### 2. Product & Half of Footer
+### `Product & Half of Footer`
 
 ![Alt text](/frontend/public/images/example_mobile_1.png)
 
