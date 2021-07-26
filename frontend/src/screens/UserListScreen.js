@@ -51,7 +51,7 @@ export default function UserListScreen(props) {
   };
 
   return (
-    <div className="container overflow-scroll">
+    <div className="container py-5">
       <div className="">
         <h2>User List</h2>
       </div>
@@ -68,56 +68,58 @@ export default function UserListScreen(props) {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Is Admin</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, index) => (
-                <tr key={user._id}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{user._id}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.isAdmin ? "Admin" : "No"}</td>
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-outline-dark btn-sm"
-                      onClick={() => editHandler(user._id)}
-                    >
-                      Edit
-                    </button>{" "}
-                    {/* <button
+          <div className="overflow-scroll">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Is Admin</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user, index) => (
+                  <tr key={user._id}>
+                    <th scope="row">{index + 1}</th>
+                    <td>{user._id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.isAdmin ? "Admin" : "No"}</td>
+                    <td>
+                      <button
+                        type="button"
+                        className="btn btn-outline-dark btn-sm"
+                        onClick={() => editHandler(user._id)}
+                      >
+                        Edit
+                      </button>{" "}
+                      {/* <button
                       type="button"
                       className="btn btn-outline-danger btn-sm"
                       onClick={() => deleteHandler(user)}
                     >
                       Delete
                     </button> */}
-                    <button
-                      type="button"
-                      className="btn btn-outline-danger btn-sm"
-                      data-bs-toggle="modal"
-                      data-bs-target="#DeleteModal"
-                      onClick={() => {
-                        setWillBeDeletedId(user._id);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                      <button
+                        type="button"
+                        className="btn btn-outline-danger btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#DeleteModal"
+                        onClick={() => {
+                          setWillBeDeletedId(user._id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           {/* Modal */}
           <div
             className="modal fade"

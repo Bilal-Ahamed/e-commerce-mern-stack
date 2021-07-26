@@ -60,19 +60,35 @@ function Classification(props) {
         {/* Side bar component for category */}
         <Sidebar gender={gender} />
         <div className="col-10">
-          <div className="d-flex justify-content-center mb-3">
-            <Link className="text-dark text-decoration-none fw-lighter" to="/">
+          <div className="d-flex justify-content-center mb-3 fw-lighter">
+            <Link className="text-dark text-decoration-none" to="/">
               home{" "}
             </Link>
-            <span className="fw-lighter">{" / "}</span>
+            <span className="">{" / "}</span>
             <Link
-              className="text-dark text-decoration-none fw-lighter"
+              className="text-dark text-decoration-none"
               to="/classification/women"
             >
               {gender}
             </Link>
+            {category && (
+              <>
+                <span className="">{"/"}</span>
+                <Link className="text-dark text-decoration-none">
+                  {category}
+                </Link>
+              </>
+            )}
           </div>
-          <div className="d-flex flex-column align-items-center mb-5 px-5">
+          <div className="d-flex flex-column mb-5">
+            <div className="d-flex flex-column align-items-center mb-4 p-4 perk_banner text-center">
+              <h3 className="text-danger">
+                Member perk: 15% off your app order
+              </h3>
+              <span className="fs-6 fw-lighter">
+                Download & find the code in the app! not a member Join now
+              </span>
+            </div>
             <h1 className="fs-1 fw-bold mb-3">
               {gender === "women" ? "Women's Clothing" : "Men's Clothing"}
             </h1>
@@ -83,12 +99,12 @@ function Classification(props) {
             </p>
           </div>
 
-          <div className="d-flex flex-column justify-content-center align-items-center mb-5">
+          {/* <div className="d-flex flex-column justify-content-center align-items-center mb-5">
             <h1>Our New Products</h1>
             <p className="fs-5 fw-light">
               Here's Our Gorgeous {gender} Product
             </p>
-          </div>
+          </div> */}
 
           <Filter count={products?.length} sortProducts={sortProducts} />
 

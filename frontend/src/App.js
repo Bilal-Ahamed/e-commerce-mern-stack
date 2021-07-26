@@ -20,6 +20,7 @@ import UserEditScreen from "./screens/UserEditScreen";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Classification from "./screens/Classification";
 import Footer from "./components/Footer";
+import FavoritesScreen from "./screens/FavoritesScreen";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -72,6 +73,11 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to="/classification/women">
                   Women
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/favorites">
+                  Favorites
                 </Link>
               </li>
               {userInfo ? (
@@ -146,11 +152,6 @@ function App() {
                     aria-labelledby="navbarDropdown"
                   >
                     <li>
-                      <Link className="dropdown-item" to="/dashboard">
-                        Dashboard
-                      </Link>
-                    </li>
-                    <li>
                       <Link className="dropdown-item" to="/orderhistory">
                         Order History
                       </Link>
@@ -213,6 +214,7 @@ function App() {
           exact
           component={Classification}
         ></Route>
+        <Route path="/favorites" exact component={FavoritesScreen}></Route>
         <Route
           path="/productlist"
           exact

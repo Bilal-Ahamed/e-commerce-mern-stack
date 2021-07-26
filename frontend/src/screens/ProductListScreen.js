@@ -68,7 +68,7 @@ export default function ProductListScreen(props) {
   };
 
   return (
-    <div className="container overflow-scroll py-5">
+    <div className="container py-5">
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
 
@@ -90,56 +90,58 @@ export default function ProductListScreen(props) {
               Add Product
             </button>
           </div>
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">ID</th>
-                <th scope="col">NAME</th>
-                <th scope="col">PRICE</th>
-                <th scope="col">CATEGORY</th>
-                <th scope="col">BRAND</th>
-                <th scope="col">ACTIONS</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product, index) => (
-                <tr key={product._id}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{product._id}</td>
-                  <td>{product.name}</td>
-                  <td>${Number(product.price).toFixed(2)}</td>
-                  <td>{product.category}</td>
-                  <td>{product.brand}</td>
-                  <td>
-                    <button
-                      type="button"
-                      className="btn btn-outline-dark btn-sm"
-                      onClick={() => editHandler(product._id)}
-                    >
-                      Edit
-                    </button>{" "}
-                    {/* <button
+          <div className="overflow-scroll">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">NAME</th>
+                  <th scope="col">PRICE</th>
+                  <th scope="col">CATEGORY</th>
+                  <th scope="col">BRAND</th>
+                  <th scope="col">ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product, index) => (
+                  <tr key={product._id}>
+                    <th scope="row">{index + 1}</th>
+                    <td>{product._id}</td>
+                    <td>{product.name}</td>
+                    <td>${Number(product.price).toFixed(2)}</td>
+                    <td>{product.category}</td>
+                    <td>{product.brand}</td>
+                    <td>
+                      <button
+                        type="button"
+                        className="btn btn-outline-dark btn-sm"
+                        onClick={() => editHandler(product._id)}
+                      >
+                        Edit
+                      </button>{" "}
+                      {/* <button
                       type="button"
                       className="btn btn-outline-danger btn-sm"
                       onClick={() => deleteHandler(product)}
                     >
                       Delete
                     </button> */}
-                    <button
-                      type="button"
-                      className="btn btn-outline-danger btn-sm"
-                      data-bs-toggle="modal"
-                      data-bs-target="#DeleteModal"
-                      onClick={() => setWillBeDeletedId(product._id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                      <button
+                        type="button"
+                        className="btn btn-outline-danger btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#DeleteModal"
+                        onClick={() => setWillBeDeletedId(product._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           {/* Modal */}
           <div
             className="modal fade"

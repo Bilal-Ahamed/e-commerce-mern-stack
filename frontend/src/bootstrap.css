@@ -27,9 +27,17 @@ a:hover {
   color: #ee342d;
 }
 
+.perk_banner {
+  background: #f8f3ea;
+}
+
 .brand_logo {
   width: 4rem;
   height: auto;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .flex {

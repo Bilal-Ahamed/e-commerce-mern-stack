@@ -5,9 +5,16 @@ import { useSelector, useDispatch } from "react-redux";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { detailsProduct } from "../action/productActions";
+import { addToFavorite, removeFromFavorite } from "../action/favoriteActions";
 
 function ProductScreen(props) {
   const [qty, setQty] = useState(1);
+
+  const favorite = useSelector((state) => state.favorite);
+  const { favoriteItems } = favorite;
+
+  const [favorites, setFavorites] = useState({ clicked: false, favorite: "" });
+
   const productDetails = useSelector((state) => state.productDetails);
   const productId = props.match.params.id;
   const { loading, error, product } = productDetails;
@@ -17,6 +24,26 @@ function ProductScreen(props) {
     dispatch(detailsProduct(productId));
   }, []);
 
+  // toggle favorites
+  useEffect(() => {
+    if (favorites.favorite && favorites.clicked === true) {
+      dispatch(addToFavorite(productId));
+      setFavorites({ ...favorites, clicked: false });
+    } else if (favorites.favorite === false) {
+      dispatch(removeFromFavorite(productId));
+    }
+  }, [favorites]);
+
+  // For checking an item already been added to favorites section
+  useEffect(() => {
+    const alreadyAdded = favoriteItems.find((el) => el._id === productId);
+
+    if (alreadyAdded) {
+      setFavorites({ ...favorites, favorite: true });
+    }
+  }, []);
+
+  // For adding an item to the cart
   const addToCartHandler = () => {
     props.history.push(`/cart/${productId}?qty=${qty}`);
   };
@@ -47,11 +74,36 @@ function ProductScreen(props) {
                 <li className="mb-3">
                   <h6>{product.brand}</h6>
                 </li>
-                <li>
+                <li className="d-flex align-items-center justify-content-between">
                   <Rating
                     rating={product.rating}
                     numReviews={product.numReviews}
                   ></Rating>
+                  {favorites.favorite ? (
+                    <span
+                      className="mb-3 me-5 text-danger pointer"
+                      onClick={() => {
+                        setFavorites({
+                          favorite: !favorites.favorite,
+                          clicked: true,
+                        });
+                      }}
+                    >
+                      <i class="fas fa-heart"> Favorite</i>
+                    </span>
+                  ) : (
+                    <span
+                      className="mb-3 me-5 pointer"
+                      onClick={() => {
+                        setFavorites({
+                          favorite: !favorites.favorite,
+                          clicked: true,
+                        });
+                      }}
+                    >
+                      <i className="far fa-heart"> Favorite</i>
+                    </span>
+                  )}
                 </li>
                 <li className="mb-3 text-danger fs-5">
                   ${Number(product.price).toFixed(2)}

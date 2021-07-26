@@ -13,53 +13,59 @@ function OrderHistoryScreen(props) {
     dispatch(listOrderMine());
   }, [dispatch]);
   return (
-    <div>
-      <h1>Order History</h1>
+    <div className="container py-5">
+      <h2>Order History</h2>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <table className="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>ACTIONS</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => {
-              return (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>${Number(order.totalPrice).toFixed(2)}</td>
-                  <td>{order.isPaid ? order.paidAt.substring(0, 10) : "No"}</td>
-                  <td>
-                    {order.isDelivered
-                      ? order.deliveredAt.substring(0, 10)
-                      : "No"}
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      className="small"
-                      onClick={() => {
-                        props.history.push(`/order/${order._id}`);
-                      }}
-                    >
-                      Details
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="overflow-scroll">
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th>ID</th>
+                <th>DATE</th>
+                <th>TOTAL</th>
+                <th>PAID</th>
+                <th>DELIVERED</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.map((order, index) => {
+                return (
+                  <tr key={order._id}>
+                    <th scope="row">{index + 1}</th>
+                    <td>{order._id}</td>
+                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>${Number(order.totalPrice).toFixed(2)}</td>
+                    <td>
+                      {order.isPaid ? order.paidAt.substring(0, 10) : "No"}
+                    </td>
+                    <td>
+                      {order.isDelivered
+                        ? order.deliveredAt.substring(0, 10)
+                        : "No"}
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        className="btn btn-outline-dark btn-sm"
+                        onClick={() => {
+                          props.history.push(`/order/${order._id}`);
+                        }}
+                      >
+                        Details
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

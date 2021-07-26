@@ -1,6 +1,7 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import { cartReducer } from "./reducers/cartReducers";
+import { favoriteReducer } from "./reducers/favoriteReducers";
 import {
   orderCreateReducer,
   orderDetailsReducer,
@@ -39,25 +40,31 @@ const initialState = {
       ? JSON.parse(localStorage.getItem("userInfo"))
       : "",
   },
+  favorite: {
+    favoriteItems: localStorage.getItem("favoriteItems")
+      ? JSON.parse(localStorage.getItem("favoriteItems"))
+      : [],
+  },
 };
 const reducer = combineReducers({
   productList: productListReducers,
   productDetails: productDetailsReducers,
-  cart: cartReducer,
+  productCreate: productCreateReducer,
+  productDelete: productDeleteReducer,
+  productUpdate: productUpdateReducer,
   userSignin: userSignReducer,
   userRegister: userRegisterReducer,
+  userList: userListReducer,
+  userDelete: userDeleteReducer,
+  userEdit: userEditReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
+  cart: cartReducer,
+  favorite: favoriteReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
   orderMineList: orderMineListReducer,
-  userDetails: userDetailsReducer,
-  userUpdateProfile: userUpdateProfileReducer,
-  productCreate: productCreateReducer,
-  productDelete: productDeleteReducer,
-  productUpdate: productUpdateReducer,
-  userList: userListReducer,
-  userDelete: userDeleteReducer,
-  userEdit: userEditReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -19,29 +19,33 @@ function Footer() {
             </div>
             <div className="col">
               <ul>
-                <h6>Customer Service</h6>
-                <li className="text-secondary">Contact Us</li>
-                <li className="text-secondary">Contact Us</li>
-                <li className="text-secondary">Contact Us</li>
-                <li className="text-secondary">Contact Us</li>
+                <h6>Corporate Info</h6>
+                <li className="text-secondary">Career at H&M</li>
+                <li className="text-secondary">About H&M group</li>
+                <li className="text-secondary">sustainability</li>
+                <li className="text-secondary">Press</li>
+                <li className="text-secondary">Investor Relations</li>
+                <li className="text-secondary">Corporate Governance</li>
               </ul>
             </div>
             <div className="col">
               <ul>
-                <h6>Terms Of Services</h6>
-                <li className="text-secondary">Contact Us</li>
-                <li className="text-secondary">Contact Us</li>
-                <li className="text-secondary">Contact Us</li>
-                <li className="text-secondary">Contact Us</li>
+                <h6>Help</h6>
+                <li className="text-secondary">Customer Service</li>
+                <li className="text-secondary">My Account</li>
+                <li className="text-secondary">Store Locator</li>
+                <li className="text-secondary">Contact</li>
+                <li className="text-secondary">Legal & Privacy</li>
+                <li className="text-secondary">Gift Card</li>
               </ul>
             </div>
             <div className="col">
               <ul>
-                <h6>Products</h6>
-                <li className="text-secondary">Contact Us</li>
-                <li className="text-secondary">Contact Us</li>
-                <li className="text-secondary">Contact Us</li>
-                <li className="text-secondary">Contact Us</li>
+                <h6>Become a member</h6>
+                <li className="text-secondary">
+                  Join now and get 10% off your second purchase, and free
+                  returns on all online purchases!
+                </li>
               </ul>
             </div>
           </div>
