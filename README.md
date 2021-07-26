@@ -1,16 +1,28 @@
-# Under Development...
+# E-Commerce Website Using MERN Stack
 
-1. 데스크톱
+다음은 프로젝트의 스크린 이미지 입니다.
+
+## 데스크톱
+
+### Home
 
 ![Alt text](/frontend/public/images/example_desktop_0.png)
 
+### Product
+
 ![Alt text](/frontend/public/images/example_desktop_1.png)
+
+### User List
 
 ![Alt text](/frontend/public/images/example_desktop_2.png)
 
-2. 모바일(구글 크롬 개발자 도구에서의 모바일 iPhone X setting)
+## 모바일(구글 크롬 개발자 도구에서의 모바일 iPhone X 해상도)
+
+### Home
 
 ![Alt text](/frontend/public/images/example_mobile_0.png)
+
+### Product & Half of Footer
 
 ![Alt text](/frontend/public/images/example_mobile_1.png)
 
