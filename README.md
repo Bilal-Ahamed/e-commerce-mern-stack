@@ -38,6 +38,13 @@ Screen for desktop resolution.
 JWT_SECRET=your_secret_goes_here
 PAYPAL_CLIENT_ID=your_secret_goes_here
 MONGODB_URL=your_secret_goes_here
+
+
+(test)
+
+JWT_SECRET=something
+PAYPAL_CLIENT_ID=AR-dclHUVmeHODDhWRKOKPQ5fkXzor_JJX8WsHvploRJM8_bqs_dbFP22jNQslv2yfPHdyo1z6p64FiY
+MONGODB_URL=mongodb+srv://lemidia:ehrrh5146@database.he6sy.mongodb.net/database?retryWrites=true&w=majority
 ```
 
 3. 루트폴더에서 npm start로 node js 서버를 구동한다. (localhost:5000)
