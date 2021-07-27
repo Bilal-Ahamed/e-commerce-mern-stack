@@ -16,11 +16,15 @@ dotenv.config();
 
 const uri = "your_api_uri_here";
 
-mongoose.connect(process.env.MONGODB_URL || uri, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://lemidia:ehrrh5146@database.he6sy.mongodb.net/database?retryWrites=true&w=majority" ||
+    uri,
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  }
+);
 
 const connection = mongoose.connection;
 connection.once("open", () => {
