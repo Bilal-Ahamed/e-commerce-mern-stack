@@ -18,6 +18,10 @@ Screen for desktop resolution.
 
 ![Alt text](/frontend/public/images/example_desktop_2.png)
 
+### `women shop section`
+
+![Alt text](/frontend/public/images/example_desktop_3.png)
+
 ## Mobile (Resolution for iPhone X)
 
 ### `Home`
