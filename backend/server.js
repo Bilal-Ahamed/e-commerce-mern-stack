@@ -52,7 +52,7 @@ app.use((err, req, res, next) => {
 
 if (process.env.NODE_ENV === "production") {
   // Set static folder
-  app.use(express.static("../frontend/build"));
+  app.use(express.static(path.resolve(process.cwd(), "frontend/build")));
   app.get("*", (req, res) => {
     res.sendFile(
       path.resolve(process.cwd(), "frontend", "build", "index.html")
