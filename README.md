@@ -28,6 +28,21 @@ Screen for desktop resolution.
 
 ![Alt text](/frontend/public/images/example_mobile_1.png)
 
+## How to setup
+
+1. 루트 폴더와 frontend 폴더 각각에서 다음 명령어를 실행한다.
+   npm install
+2. 루트 폴더 밑에 .env 파일을 만들고 자신의 secret value 를 기입한다.
+
+```
+JWT_SECRET=your_secret_goes_here
+PAYPAL_CLIENT_ID=your_secret_goes_here
+MONGODB_URL=your_secret_goes_here
+```
+
+3. 루트폴더에서 npm start로 node js 서버를 구동한다. (localhost:5000)
+4. frontend 폴더로 가서 npm start로 react js 서버를 구동한다. (localhost:3000)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

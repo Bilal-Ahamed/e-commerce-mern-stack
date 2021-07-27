@@ -6,6 +6,7 @@ import productRouter from "./router/productRouter.js";
 import orderRouter from "./router/orderRouter.js";
 import uploadRouter from "./router/uploadRouter.js";
 import classificationRouter from "./router/classification.js";
+import path from "path";
 
 const app = express();
 app.use(express.json());
@@ -46,6 +47,18 @@ app.get("/", (req, res) => {
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
+
+// Serve static assets if in production
+
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("../frontend/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(
+      path.resolve(process.cwd(), "frontend", "build", "index.html")
+    );
+  });
+}
 
 const port = process.env.PORT || 5000;
 
