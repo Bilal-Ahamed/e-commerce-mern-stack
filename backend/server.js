@@ -37,9 +37,9 @@ app.use("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });
 
-app.get("/", (req, res) => {
-  res.send("Server is ready");
-});
+// app.get("/", (req, res) => {
+//   res.send("Server is ready");
+// });
 
 // error catcher.
 // when error occur, expressAsyncHandler will redirect error to this middleware
