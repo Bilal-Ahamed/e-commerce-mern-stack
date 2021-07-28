@@ -204,13 +204,13 @@ function App() {
         <Route path="/order/:id" component={OrderScreen}></Route>
         <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
         <Route path="/profile" component={ProfileScreen}></Route>
-        <Route
+        {/* <Route
           path="/classification/:gender"
           exact
           component={Classification}
-        ></Route>
+        ></Route> */}
         <Route
-          path="/classification/:gender/:category"
+          path="/classification/:gender/:category?"
           exact
           component={Classification}
         ></Route>

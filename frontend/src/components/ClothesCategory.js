@@ -1,31 +1,47 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Sidebar(props) {
+function ClothesCategory(props) {
   return props.gender === "women" ? (
-    <div className="col-2 mt-5 d-none d-md-block">
-      <ul className="d-grid gap-4 fw-light">
-        <li className="fs-5 fw-bold">Women</li>
+    <div className="col mt-2 mb-4 d-md-none">
+      <ul className="d-flex fw-bold py-4 overflow-scroll">
         <li>
-          <Link to="/classification/women">View All</Link>
+          <Link
+            className="p-3 border-start border-4 border-danger"
+            to="/classification/women"
+          >
+            All
+          </Link>
         </li>
         <li>
-          <Link to="/classification/women/dresses">Dresses</Link>
+          <Link className="mx-4" to="/classification/women/dresses">
+            Dresses
+          </Link>
         </li>
         <li>
-          <Link to="/classification/women/tops">Tops</Link>
+          <Link className="mx-4" to="/classification/women/tops">
+            Tops
+          </Link>
         </li>
         <li>
-          <Link to="/classification/women/shirts">Shirts</Link>
+          <Link className="mx-4" to="/classification/women/shirts">
+            Shirts
+          </Link>
         </li>
         <li>
-          <Link to="/classification/women/pants">Pants</Link>
+          <Link className="mx-4" to="/classification/women/pants">
+            Pants
+          </Link>
         </li>
         <li>
-          <Link to="/classification/women/jeans">Jeans</Link>
+          <Link className="mx-4" to="/classification/women/jeans">
+            Jeans
+          </Link>
         </li>
         <li>
-          <Link to="/classification/women/shoes">Shoes</Link>
+          <Link className="mx-4" to="/classification/women/shoes">
+            Shoes
+          </Link>
         </li>
       </ul>
     </div>
@@ -61,4 +77,4 @@ function Sidebar(props) {
   );
 }
 
-export default Sidebar;
+export default ClothesCategory;

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import LoadingBox from "../components/LoadingBox";
 import Filter from "../components/Filter";
+import ClothesCategory from "../components/ClothesCategory";
 
 function Classification(props) {
   const gender = props.match.params.gender;
@@ -14,23 +15,22 @@ function Classification(props) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const [origin, setOrigin] = useState([]);
-
   useEffect(async () => {
-    setLoading(true);
     if (category) {
       const { data } = await axios.get(
         `/api/classification/${gender}/${category}`
       );
       setProducts(data);
-      setLoading(data);
     } else {
       const { data } = await axios.get(`/api/classification/${gender}`);
       setProducts(data);
-      setOrigin(data);
     }
     setLoading(false);
   }, [gender, category]);
+
+  useEffect(() => {
+    setLoading(true);
+  }, []);
 
   // when user changes order option, this function is called
   const sortProducts = (e) => {
@@ -55,11 +55,10 @@ function Classification(props) {
     <LoadingBox />
   ) : (
     <div className="container my-5">
-      {/* Our New Products */}
-      <div className="row row-1 row-md-2">
+      <div className="row row-cols-1">
         {/* Side bar component for category */}
-        <Sidebar gender={gender} />
-        <div className="col-10">
+        <Sidebar gender={gender} hiding={"d-none d-md-block"} />
+        <div className="col-12 col-md-10">
           <div className="d-flex justify-content-center mb-3 fw-lighter">
             <Link className="text-dark text-decoration-none" to="/">
               home{" "}
@@ -89,6 +88,9 @@ function Classification(props) {
                 Download & find the code in the app! not a member Join now
               </span>
             </div>
+
+            <ClothesCategory gender={gender} />
+
             <h1 className="fs-1 fw-bold mb-3">
               {gender === "women" ? "Women's Clothing" : "Men's Clothing"}
             </h1>

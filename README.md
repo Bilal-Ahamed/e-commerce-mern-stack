@@ -32,6 +32,10 @@ Screen for desktop resolution.
 
 ![Alt text](/frontend/public/images/example_mobile_1.png)
 
+### `women shop section & category overflow scroll`
+
+![Alt text](/frontend/public/images/example_mobile_2.png)
+
 ## How to setup
 
 1. 루트 폴더와 frontend 폴더 각각에서 다음 명령어를 실행한다.
@@ -42,17 +46,14 @@ Screen for desktop resolution.
 JWT_SECRET=your_secret_goes_here
 PAYPAL_CLIENT_ID=your_secret_goes_here
 MONGODB_URL=your_secret_goes_here
-
-
-(test)
-
-JWT_SECRET=something
-PAYPAL_CLIENT_ID=AR-dclHUVmeHODDhWRKOKPQ5fkXzor_JJX8WsHvploRJM8_bqs_dbFP22jNQslv2yfPHdyo1z6p64FiY
-MONGODB_URL=mongodb+srv://lemidia:ehrrh5146@database.he6sy.mongodb.net/database?retryWrites=true&w=majority
 ```
 
 3. 루트폴더에서 npm start로 node js 서버를 구동한다. (localhost:5000)
 4. frontend 폴더로 가서 npm start로 react js 서버를 구동한다. (localhost:3000)
+
+## Demo
+
+Link : https://whispering-cove-62911.herokuapp.com/
 
 # Getting Started with Create React App
 

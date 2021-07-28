@@ -20,7 +20,7 @@ function FavoritesScreen(props) {
 
   return (
     <div className="container my-5 p-5 text-center">
-      <div className="mb-5">
+      <div className="mb-4">
         <h1 className="">Favorites</h1>
       </div>
 

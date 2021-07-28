@@ -28,23 +28,37 @@ function CartScreen(props) {
     props.history.push("/signin?redirect=shipping");
   };
 
+  const browseNow = () => {
+    props.history.push("/classification/women");
+  };
+
   return (
     <div className="container py-5">
-      <h1 className="mb-5">Shopping Cart</h1>
-      <div className="row row-cols-md-2">
-        <div className="col col-12 col-md-9 overflow-scroll">
-          {cartItems.length === 0 ? (
-            <MessageBox>
-              Cart is empty. <Link to="/">Go Shopping</Link>
-            </MessageBox>
-          ) : (
+      {cartItems.length === 0 ? (
+        <>
+          <h1 className="text-center mb-4">There's nothing in here now :)</h1>
+          <div className="d-flex flex-column justify-content-center align-items-center mb-5">
+            <h6 className="fs-5 mb-3">SAVE YOUR ITEMS AND GO SHOPPING</h6>
+            <p className="text-secondary fw-light mb-5">
+              Like to save the items that you love? Just click on the heart
+              symbol on the item and it will show up here.
+            </p>
+            <button className="btn btn-outline-dark btn-lg" onClick={browseNow}>
+              Browse Now
+            </button>
+          </div>
+        </>
+      ) : (
+        <div className="row row-cols-md-2">
+          <div className="col col-12 col-md-9">
             <ul className="">
               {cartItems.map((item) => (
                 <li key={item.product} className="mb-5">
                   <div className="row row-cols-5 align-items-center">
-                    <div className="col-2">
+                    <div className="col-3">
                       <img
-                        className="img-fluid"
+                        style={{ width: 100 }}
+                        className="img-thumbnail"
                         src={item.image}
                         alt={item.name}
                       />
@@ -91,35 +105,35 @@ function CartScreen(props) {
                 </li>
               ))}
             </ul>
-          )}
+          </div>
+          <div className="col col-6 col-md-3">
+            <ul>
+              <li className="mb-3">
+                <h5 className="fw-light">
+                  Subtotal <br /> ({cartItems.reduce((a, c) => a + c.qty, 0)}{" "}
+                  items) : $
+                  {Number(
+                    cartItems.reduce(
+                      (a, c) => a + Number(c.price).toFixed(2) * c.qty,
+                      0
+                    )
+                  ).toFixed(2)}
+                </h5>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={checkoutHandler}
+                  className="btn btn-outline-dark"
+                  disabled={cartItems.length === 0}
+                >
+                  Proceed to Checkout
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="col col-6 col-md-3">
-          <ul>
-            <li className="mb-3">
-              <h5 className="fw-light">
-                Subtotal <br /> ({cartItems.reduce((a, c) => a + c.qty, 0)}{" "}
-                items) : $
-                {Number(
-                  cartItems.reduce(
-                    (a, c) => a + Number(c.price).toFixed(2) * c.qty,
-                    0
-                  )
-                ).toFixed(2)}
-              </h5>
-            </li>
-            <li>
-              <button
-                type="button"
-                onClick={checkoutHandler}
-                className="btn btn-outline-dark"
-                disabled={cartItems.length === 0}
-              >
-                Proceed to Checkout
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
