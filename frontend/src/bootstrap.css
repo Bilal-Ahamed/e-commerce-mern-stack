@@ -53,6 +53,10 @@ a:hover {
   background-color: #faf9f8 !important;
 }
 
+.offcanvas-header {
+  background-color: #f8e6e2;
+}
+
 @media screen and (max-width: 530px) {
   .offcanvas {
     width: 80%;

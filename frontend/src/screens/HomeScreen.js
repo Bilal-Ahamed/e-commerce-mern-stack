@@ -17,7 +17,7 @@ function HomeScreen() {
 
   return (
     <React.Fragment>
-      <div className="container my-5">
+      <div className="container">
         {/* shipping banner */}
 
         <Banner

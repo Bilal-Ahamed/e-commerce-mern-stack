@@ -40,10 +40,10 @@ function App() {
     <BrowserRouter>
       {/* Nav */}
       <nav
-        className="navbar navbar-expand-lg navbar-light main-navigation"
+        className="navbar navbar-expand-lg navbar-light sticky-top my-3"
         style={{ backgroundColor: "#FAF9F8" }}
       >
-        <div className="container pt-3 pb-0">
+        <div className="container">
           {/* nav brand */}
           <Link className="navbar-brand order-2 order-lg-1 me-auto" to="/">
             <img className="brand_logo" src="/images/h&m_logo.png" alt="" />

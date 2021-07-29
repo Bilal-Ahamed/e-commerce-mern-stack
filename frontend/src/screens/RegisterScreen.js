@@ -40,7 +40,7 @@ function RegisterScreen(props) {
       <form className="form" onSubmit={submitHandler}>
         <div className="">
           <h1 className="mb-4">Register</h1>
-          {loading && <LoadingBox></LoadingBox>}
+
           {error && <MessageBox variant="danger">{error}</MessageBox>}
         </div>
         <div className="mb-3">
@@ -102,16 +102,30 @@ function RegisterScreen(props) {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        <div className="d-grid mb-4 pt-2">
-          <button className="btn btn-outline-dark" type="submit">
-            Register
-          </button>
-        </div>
+
+        {loading ? (
+          <div className="d-grid mb-4 pt-2">
+            <button class="btn btn-outline-dark" type="button">
+              <span
+                class="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              <span class=""> Loading...</span>
+            </button>
+          </div>
+        ) : (
+          <div className="d-grid mb-4 pt-2">
+            <button type="submit" className="btn btn-outline-dark ">
+              Register
+            </button>
+          </div>
+        )}
 
         <div className="mt-2">
           Already have an account?{" "}
           <Link
-            className="text-decoration-none"
+            className="text-decoration-underline"
             to={`/signin?redirect=${redirect}`}
           >
             Go to Sign In

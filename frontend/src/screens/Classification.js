@@ -16,6 +16,8 @@ function Classification(props) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [numOfVisibleItems, setNumOfVisibleItems] = useState(10);
+
   useEffect(async () => {
     if (category) {
       const { data } = await axios.get(
@@ -26,6 +28,7 @@ function Classification(props) {
       const { data } = await axios.get(`/api/classification/${gender}`);
       setProducts(data);
     }
+    setNumOfVisibleItems(10);
     setLoading(false);
   }, [gender, category]);
 
@@ -52,10 +55,15 @@ function Classification(props) {
     );
   };
 
+  // for loading more items
+  const showMoreItems = () => {
+    setNumOfVisibleItems((prev) => prev + 10);
+  };
+
   return loading ? (
     <LoadingBox />
   ) : (
-    <div className="container my-5">
+    <div className="container mt-3 mb-5">
       <div className="row row-cols-1">
         {/* Side bar component for category */}
         <Sidebar gender={gender} hiding={"d-none d-md-block"} />
@@ -111,10 +119,19 @@ function Classification(props) {
           <Filter count={products?.length} sortProducts={sortProducts} />
 
           <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4">
-            {products.map((product) => (
+            {products.slice(0, numOfVisibleItems).map((product) => (
               <Product key={product._id} product={product} />
             ))}
           </div>
+          {numOfVisibleItems <= products.length && (
+            <button
+              className="btn btn-outline-dark mb-4"
+              type="button"
+              onClick={showMoreItems}
+            >
+              Load More
+            </button>
+          )}
         </div>
       </div>
     </div>

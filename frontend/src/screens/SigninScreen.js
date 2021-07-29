@@ -33,7 +33,6 @@ function SigninScreen(props) {
     <div className="d-flex justify-content-center align-items-start py-5">
       <form onSubmit={submitHandler}>
         <h2 className="mb-4">Sign In</h2>
-        {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -75,16 +74,29 @@ function SigninScreen(props) {
             Check me out
           </label>
         </div>
-        <div className="d-grid mb-4">
-          <button type="submit" className="btn btn-outline-dark ">
-            Sign In
-          </button>
-        </div>
+        {loading ? (
+          <div className="d-grid mb-4">
+            <button class="btn btn-outline-dark" type="button">
+              <span
+                class="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              <span class=""> Loading...</span>
+            </button>
+          </div>
+        ) : (
+          <div className="d-grid mb-4">
+            <button type="submit" className="btn btn-outline-dark ">
+              Sign In
+            </button>
+          </div>
+        )}
 
         <div className="">
           New customer?{" "}
           <Link
-            className="text-decoration-none"
+            className="text-decoration-underline"
             to={`/register?redirect=${redirect}`}
           >
             Create your account
