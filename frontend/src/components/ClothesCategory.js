@@ -4,12 +4,9 @@ import { Link } from "react-router-dom";
 function ClothesCategory(props) {
   return props.gender === "women" ? (
     <div className="col mt-2 mb-4 d-md-none">
-      <ul className="d-flex fw-bold py-4 overflow-scroll">
+      <ul className="d-flex fw-bold py-3 border-start border-4 border-danger overflow-scroll">
         <li>
-          <Link
-            className="p-3 border-start border-4 border-danger"
-            to="/classification/women"
-          >
+          <Link className="p-3" to="/classification/women">
             All
           </Link>
         </li>

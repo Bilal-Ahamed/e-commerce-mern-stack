@@ -7,6 +7,7 @@ import Sidebar from "../components/Sidebar";
 import LoadingBox from "../components/LoadingBox";
 import Filter from "../components/Filter";
 import ClothesCategory from "../components/ClothesCategory";
+import Banner from "../components/Banner";
 
 function Classification(props) {
   const gender = props.match.params.gender;
@@ -80,14 +81,13 @@ function Classification(props) {
             )}
           </div>
           <div className="d-flex flex-column mb-5">
-            <div className="d-flex flex-column align-items-center mb-4 p-4 perk_banner text-center">
-              <h3 className="text-danger">
-                Member perk: 15% off your app order
-              </h3>
-              <span className="fs-6 fw-lighter">
-                Download & find the code in the app! not a member Join now
-              </span>
-            </div>
+            <Banner
+              type={"perk_banner"}
+              mainText={"Member perk: 15% off your app order"}
+              subText={
+                "Download & find the code in the app! not a member Join now"
+              }
+            />
 
             <ClothesCategory gender={gender} />
 

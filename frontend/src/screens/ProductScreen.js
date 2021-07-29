@@ -6,6 +6,7 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { detailsProduct } from "../action/productActions";
 import { addToFavorite, removeFromFavorite } from "../action/favoriteActions";
+import Recommend from "../components/Recommend";
 
 function ProductScreen(props) {
   const [qty, setQty] = useState(1);
@@ -22,7 +23,7 @@ function ProductScreen(props) {
 
   useEffect(() => {
     dispatch(detailsProduct(productId));
-  }, []);
+  }, [productId]);
 
   // toggle favorites
   useEffect(() => {
@@ -160,6 +161,11 @@ function ProductScreen(props) {
               </ul>
             </div>
           </div>
+          <Recommend
+            gender={product.gender}
+            category={product.category}
+            id={productId}
+          />
         </div>
       )}
     </React.Fragment>

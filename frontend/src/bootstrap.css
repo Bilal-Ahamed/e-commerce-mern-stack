@@ -5,11 +5,13 @@
 }
 
 #root {
-  background-color: #fffefd;
+  /* background-color: #fffefd; */
+  background-color: #faf9f8;
 }
 
 footer {
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
+  background-color: #f0efef;
 }
 
 ul {
@@ -27,8 +29,34 @@ a:hover {
   color: #ee342d;
 }
 
+/* banner */
+
 .perk_banner {
   background: #f8f3ea;
+}
+
+.perk_banner > h3 {
+  color: rgb(233, 33, 33) !important;
+}
+
+.perk_banner > span {
+  color: rgb(121, 118, 118) !important;
+}
+
+.shipping_banner {
+  background: linear-gradient(to right, #f5808f, #fabb7b);
+}
+
+/* offcanvas */
+
+.offcanvas {
+  background-color: #faf9f8 !important;
+}
+
+@media screen and (max-width: 530px) {
+  .offcanvas {
+    width: 80%;
+  }
 }
 
 .brand_logo {
@@ -81,10 +109,6 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
-
-/* .card {
-  width: 18rem;
-} */
 
 @media screen and (max-width: 980px) {
   .badge {
