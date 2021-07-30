@@ -16,7 +16,19 @@ function Classification(props) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const [numOfVisibleItems, setNumOfVisibleItems] = useState(10);
+  const visible = props.location.search
+    ? Number(props.location.search.split("=")[1])
+    : 10;
+
+  const [numOfVisibleItems, setNumOfVisibleItems] = useState(visible);
+
+  useEffect(() => {
+    setLoading(true);
+  }, []);
+
+  useEffect(() => {
+    setNumOfVisibleItems(visible);
+  }, [visible]);
 
   useEffect(async () => {
     if (category) {
@@ -28,13 +40,21 @@ function Classification(props) {
       const { data } = await axios.get(`/api/classification/${gender}`);
       setProducts(data);
     }
-    setNumOfVisibleItems(10);
     setLoading(false);
   }, [gender, category]);
 
-  useEffect(() => {
-    setLoading(true);
-  }, []);
+  // for loading more items
+  const showMoreItems = () => {
+    if (category) {
+      props.history.replace(
+        `/classification/${gender}/${category}?visible=${numOfVisibleItems + 5}`
+      );
+    } else {
+      props.history.replace(
+        `/classification/${gender}?visible=${numOfVisibleItems + 5}`
+      );
+    }
+  };
 
   // when user changes order option, this function is called
   const sortProducts = (e) => {
@@ -53,11 +73,6 @@ function Classification(props) {
             : new Date(a.createdAt) - new Date(b.createdAt)
         )
     );
-  };
-
-  // for loading more items
-  const showMoreItems = () => {
-    setNumOfVisibleItems((prev) => prev + 10);
   };
 
   return loading ? (
@@ -123,7 +138,7 @@ function Classification(props) {
               <Product key={product._id} product={product} />
             ))}
           </div>
-          {numOfVisibleItems <= products.length && (
+          {numOfVisibleItems < products.length && (
             <button
               className="btn btn-outline-dark mb-4"
               type="button"

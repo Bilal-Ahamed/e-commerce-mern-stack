@@ -29,7 +29,7 @@ function CartScreen(props) {
   };
 
   const browseNow = () => {
-    props.history.push("/classification/women");
+    props.history.push(`/classification/women`);
   };
 
   return (
