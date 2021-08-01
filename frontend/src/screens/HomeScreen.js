@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../action/productActions";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
+import Showcase from "../components/Showcase";
 
 function HomeScreen() {
   const dispatch = useDispatch();
@@ -123,9 +124,33 @@ function HomeScreen() {
       </div>
 
       <div className="container">
+        {/* showcase btn */}
+        <div className="row row-cols-1 row-cols-md-2">
+          <div className="col mb-5">
+            <Link>
+              <Showcase
+                title={"Women"}
+                subtitle={"Look at the women's items"}
+                background="https://images.unsplash.com/photo-1494228766058-1430438d10fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+              />
+            </Link>
+          </div>
+          <div className="col mb-5">
+            <Link>
+              <Showcase
+                title={"Men"}
+                subtitle={"Find clothes fit your need"}
+                background="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80"
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
         <div className="d-flex flex-column justify-content-center align-items-center mb-5">
-          <h1>Our New Products</h1>
-          <p className="fs-5 fw-light">Here's Our Gorgeous Product</p>
+          <h1>New Arrivals</h1>
+          <p className="fs-5 fw-light">Look at best Items fit your need!</p>
         </div>
 
         {loading ? (

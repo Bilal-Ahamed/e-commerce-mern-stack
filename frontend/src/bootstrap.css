@@ -168,8 +168,9 @@ a:hover {
 .carousel-item {
   height: 500px;
   background: no-repeat scroll center scroll;
+  /* no-repeat scroll center scroll; */
+  /* no-repeat center center/cover; */
   -webkit-background-size: cover;
-  background-size: cover;
 }
 
 .carousel-item::before {
@@ -186,4 +187,46 @@ a:hover {
 
 .carousel-caption {
   bottom: 30%;
+}
+
+/* showcase */
+
+.showcase-container {
+  height: 23rem;
+  overflow: hidden;
+  position: relative;
+  border-radius: 7px;
+}
+
+.showcase {
+  height: 100%;
+  width: 100%;
+  background: no-repeat center center/cover;
+  -webkit-background-size: cover;
+  transition: all 0.5s;
+}
+
+.showcase-container:hover .showcase {
+  transform: scale(1.1);
+}
+
+.typography {
+  position: absolute;
+  color: white;
+  top: 10%;
+  left: 5%;
+  z-index: 2;
+}
+
+.showcase-container:hover::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0.2;
+  z-index: 1;
 }
