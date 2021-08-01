@@ -78,7 +78,7 @@ function Classification(props) {
   return loading ? (
     <LoadingBox />
   ) : (
-    <div className="container mt-3 mb-5">
+    <div className="container mt-5 mb-5">
       <div className="row row-cols-1">
         {/* Side bar component for category */}
         <Sidebar gender={gender} hiding={"d-none d-md-block"} />

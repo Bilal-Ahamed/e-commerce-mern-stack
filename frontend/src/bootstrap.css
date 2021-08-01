@@ -14,6 +14,8 @@ footer {
   background-color: #f0efef;
 }
 
+/* global style settings */
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -22,11 +24,12 @@ ul {
 
 a {
   text-decoration: none;
-  color: #283333;
+  /* color: #283333; */
+  color: #7c797b;
 }
 
 a:hover {
-  color: #ee342d;
+  color: #eb609a;
 }
 
 /* banner */
@@ -57,16 +60,57 @@ a:hover {
   background-color: #f8e6e2;
 }
 
+.offcanvas-body li {
+  margin-top: 1.3rem;
+}
+
+.offcanvas-body li > a {
+  padding: 0.5rem;
+}
+
 @media screen and (max-width: 530px) {
   .offcanvas {
     width: 80%;
   }
 }
 
+/* nav toggle bar */
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler:hover {
+  color: #868686;
+  box-shadow: 0 0 0 0.2rem;
+}
+
+/* desktop nav hover */
+
+.hover-menu {
+  position: relative;
+}
+
+.hover-menu > ul {
+  display: none;
+  position: absolute;
+  background-color: #faf9f8;
+  top: 2.5rem;
+  left: -2rem;
+}
+
+.hover-menu:hover > ul {
+  display: inline;
+}
+
+/* brand logo */
+
 .brand_logo {
   width: 4rem;
   height: auto;
 }
+
+/* pointer for whatever element */
 
 .pointer {
   cursor: pointer;
@@ -77,6 +121,8 @@ a:hover {
   justify-content: space-between;
   align-items: center;
 }
+
+/* for styling checkout stops */
 
 .checkout-steps > div {
   border-top: 0.2rem #c0d0d0 solid;
@@ -97,14 +143,17 @@ a:hover {
   }
 }
 
+/* for styling cart icon and badge */
+
 .cart {
   position: relative;
+  padding-top: 0.4rem;
 }
 
 .badge {
   position: absolute;
   top: 0;
-  left: 22px;
+  left: 1.3rem;
   background-color: red;
   border-radius: 5px;
   width: 1.1rem;
@@ -114,8 +163,27 @@ a:hover {
   align-items: center;
 }
 
-@media screen and (max-width: 980px) {
-  .badge {
-    left: 15px;
-  }
+/* carousel */
+
+.carousel-item {
+  height: 500px;
+  background: no-repeat scroll center scroll;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.carousel-item::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0.23;
+}
+
+.carousel-caption {
+  bottom: 30%;
 }

@@ -5,6 +5,7 @@ import MessageBox from "../components/MessageBox";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../action/productActions";
 import Banner from "../components/Banner";
+import { Link } from "react-router-dom";
 
 function HomeScreen() {
   const dispatch = useDispatch();
@@ -17,107 +18,111 @@ function HomeScreen() {
 
   return (
     <React.Fragment>
+      {/* carousel */}
+      <div
+        id="carouselExampleCaptions"
+        className="carousel slide mb-5"
+        data-bs-ride="carousel"
+      >
+        <div className="carousel-inner">
+          <div
+            className="carousel-item active"
+            style={{
+              backgroundImage: `url("https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2252&q=80")`,
+            }}
+          >
+            {/* <img
+              src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2252&q=80"
+              className="d-block w-100"
+              alt="..."
+            /> */}
+            <div className="carousel-caption">
+              <h1>Women Collection</h1>
+              <p className="fw-light fs-5">
+                Check it out. Our best quality item in the world.
+              </p>
+              <Link to="/classification/women">
+                <button className="btn btn-outline-light btn-lg mt-3">
+                  Shop Now
+                </button>
+              </Link>
+            </div>
+          </div>
+          <div
+            className="carousel-item"
+            style={{
+              backgroundImage: `url("https://images.unsplash.com/photo-1507702553912-a15641e827c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2252&q=80")`,
+            }}
+          >
+            {/* <img
+              src="https://images.unsplash.com/photo-1507702553912-a15641e827c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2252&q=80"
+              className="d-block w-100"
+              alt="..."
+            /> */}
+            <div className="carousel-caption">
+              <h1>Luxuries Items</h1>
+              <p className="fw-light fs-5">
+                Find the best item in the world at best quality
+              </p>
+              <button className="btn btn-outline-light btn-lg">Shop Now</button>
+            </div>
+          </div>
+          <div
+            className="carousel-item"
+            style={{
+              backgroundImage: `url("https://images.unsplash.com/photo-1494578379344-d6c710782a3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2250&q=80")`,
+            }}
+          >
+            {/* <img
+              src="https://images.unsplash.com/photo-1494578379344-d6c710782a3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2250&q=80"
+              className="d-block"
+              alt="..."
+            /> */}
+            <div className="carousel-caption">
+              <h1>Women Collection</h1>
+              <p className="fw-light fs-5">
+                Check it out. Our best quality item in the world.
+              </p>
+              <button className="btn btn-outline-light btn-lg">Shop Now</button>
+            </div>
+          </div>
+        </div>
+        <button
+          className="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button
+          className="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
+
       <div className="container">
         {/* shipping banner */}
-
         <Banner
           type={"shipping_banner"}
           mainText={"Free shipping on every order!"}
           subText={"Receive items in 3-6 business days"}
         />
-        {/* carousel */}
-        <div
-          id="carouselExampleCaptions"
-          className="carousel slide mb-5"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="0"
-              className="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-          </div>
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                src="https://images.unsplash.com/photo-1567958436049-f2903793328b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2250&q=80"
-                className="d-block w-100"
-                alt="..."
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>You Can See Various Item</h5>
-                <p>Check it out. Our best quality item in the world.</p>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img
-                src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
-                className="d-block w-100"
-                alt="..."
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>
-                  Some representative placeholder content for the second slide.
-                </p>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img
-                src="https://images.unsplash.com/photo-1567966773954-b9b3096fb387?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2250&q=80"
-                className="d-block w-100"
-                alt="..."
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>
-                  Some representative placeholder content for the third slide.
-                </p>
-              </div>
-            </div>
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
+      </div>
 
+      <div className="container">
         <div className="d-flex flex-column justify-content-center align-items-center mb-5">
           <h1>Our New Products</h1>
           <p className="fs-5 fw-light">Here's Our Gorgeous Product</p>

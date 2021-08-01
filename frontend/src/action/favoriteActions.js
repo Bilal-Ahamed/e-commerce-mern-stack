@@ -35,5 +35,5 @@ export const removeFromFavorite = (productId) => (dispatch, getState) => {
 
 export const clearAllFavorite = () => (dispatch) => {
   dispatch({ type: FAVORITE_CLEAR_ALL });
-  localStorage.setItem("favorite", JSON.stringify([]));
+  localStorage.setItem("favoriteItems", JSON.stringify([]));
 };

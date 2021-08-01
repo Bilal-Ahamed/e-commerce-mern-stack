@@ -40,7 +40,7 @@ function App() {
     <BrowserRouter>
       {/* Nav */}
       <nav
-        className="navbar navbar-expand-lg navbar-light sticky-top my-3"
+        className="navbar navbar-expand-lg navbar-light sticky-top my-1"
         style={{ backgroundColor: "#FAF9F8" }}
       >
         <div className="container">
@@ -81,62 +81,53 @@ function App() {
               ></button>
             </div>
             <div class="offcanvas-body fs-5">
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="/">
+              <ul className="">
+                <li className="">
+                  <Link className="" to="/">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 {/* <li className="nav-item">
                 <Link className="nav-link" to="/classification/men">
                   Men
                 </Link>
               </li> */}
-                <li className="nav-item">
-                  <Link className="nav-link" to="/classification/women">
+                <li className="">
+                  <Link className="" to="/classification/women">
                     Women
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/favorites">
+                <li className="">
+                  <Link className="" to="/favorites">
                     Favorites
                   </Link>
                 </li>
                 {userInfo ? (
-                  <li className="nav-item dropdown">
+                  <li className="">
                     <Link
-                      className="nav-link dropdown-toggle"
+                      className="dropdown-toggle collapsed"
                       href="#"
-                      id="navbarDropdown"
                       role="button"
-                      data-bs-toggle="dropdown"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#user-collapse"
                       aria-expanded="false"
                     >
                       {userInfo.name}
                     </Link>
-                    <ul
-                      className="dropdown-menu"
-                      aria-labelledby="navbarDropdown"
-                    >
+                    <ul id="user-collapse" className="collapse fs-6 ps-3">
                       <li>
-                        <Link className="dropdown-item" to="/profile">
+                        <Link className="" to="/profile">
                           User Profile
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/orderhistory">
+                        <Link className="" to="/orderhistory">
                           Order History
                         </Link>
                       </li>
+
                       <li>
-                        <hr className="dropdown-divider" />
-                      </li>
-                      <li>
-                        <Link
-                          className="dropdown-item"
-                          to="#"
-                          onClick={signoutHandler}
-                        >
+                        <Link className="" to="#" onClick={signoutHandler}>
                           Sign Out
                         </Link>
                       </li>
@@ -144,13 +135,13 @@ function App() {
                   </li>
                 ) : (
                   <>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/signin">
+                    <li className="">
+                      <Link className="" to="/signin">
                         Sign In
                       </Link>
                     </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/register">
+                    <li className="">
+                      <Link className="" to="/register">
                         Register
                       </Link>
                     </li>
@@ -158,40 +149,37 @@ function App() {
                 )}
 
                 {userInfo && userInfo.isAdmin && (
-                  <li className="nav-item dropdown">
+                  <li className="">
                     <Link
-                      className="nav-link dropdown-toggle"
+                      className="dropdown-toggle collapsed"
                       href="#"
-                      id="navbarDropdown"
                       role="button"
-                      data-bs-toggle="dropdown"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#admin-collapse"
                       aria-expanded="false"
                     >
                       Admin
                     </Link>
-                    <ul
-                      className="dropdown-menu"
-                      aria-labelledby="navbarDropdown"
-                    >
+                    <ul className="collapse fs-6 ps-3" id="admin-collapse">
                       <li>
-                        <Link className="dropdown-item" to="/orderhistory">
+                        <Link className="" to="/orderhistory">
                           Order History
                         </Link>
                       </li>
 
                       <li>
-                        <Link className="dropdown-item" to="/productlist">
+                        <Link className="" to="/productlist">
                           Product List
                         </Link>
                       </li>
 
                       <li>
-                        <Link className="dropdown-item" to="/userlist">
+                        <Link className="" to="/userlist">
                           User List
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/#">
+                        <Link className="" to="/#">
                           Orders
                         </Link>
                       </li>
@@ -199,10 +187,9 @@ function App() {
                   </li>
                 )}
 
-                <li className="nav-item">
-                  <Link className="nav-link cart" to="/cart">
-                    <ShoppingCartIcon style={{ fontSize: 28 }} />
-
+                <li className="mt-5">
+                  <Link className="cart" to="/cart">
+                    <ShoppingCartIcon style={{ fontSize: 28 }} /> Cart
                     {cartItems.length > 0 && (
                       <span className="badge">
                         <span>{cartItems.length}</span>
@@ -241,7 +228,7 @@ function App() {
                 </Link>
               </li>
               {userInfo ? (
-                <li className="nav-item dropdown">
+                <li className="nav-item dropdown hover-menu">
                   <Link
                     className="nav-link dropdown-toggle"
                     href="#"
@@ -252,10 +239,7 @@ function App() {
                   >
                     {userInfo.name}
                   </Link>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdown"
-                  >
+                  <ul className="border p-2" aria-labelledby="navbarDropdown">
                     <li>
                       <Link className="dropdown-item" to="/profile">
                         User Profile
@@ -296,7 +280,7 @@ function App() {
               )}
 
               {userInfo && userInfo.isAdmin && (
-                <li className="nav-item dropdown">
+                <li className="nav-item dropdown hover-menu">
                   <Link
                     className="nav-link dropdown-toggle"
                     href="#"
@@ -307,10 +291,7 @@ function App() {
                   >
                     Admin
                   </Link>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdown"
-                  >
+                  <ul className="border p-2" aria-labelledby="navbarDropdown">
                     <li>
                       <Link className="dropdown-item" to="/orderhistory">
                         Order History
