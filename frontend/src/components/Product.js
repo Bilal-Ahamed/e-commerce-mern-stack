@@ -25,33 +25,27 @@ function Product(props) {
         </div>
       </div> */}
 
-      <div className="d-flex flex-column">
-        <div className="">
+      <div className="d-flex justify-content-center">
+        <div>
           <Link to={`/product/${product._id}`}>
             <img
-              className="img-fluid mb-3"
+              className="img-fluid mb-3 rounded"
               src={product.image}
               alt=""
-              style={{ height: 300 }}
+              style={{ height: 330 }}
             />
           </Link>
-        </div>
-        <div className="">
-          <h6 className="fw-light text-secondary">{product.brand}</h6>
-          <Link
-            className="text-decoration-none text-dark"
-            to={`/product/${product._id}`}
-          >
-            <h5 className="mb-3">{product.name}</h5>
-          </Link>
-          <h6 className="mb-3">${Number(product.price).toFixed(2)}</h6>
-          {/* <Link
-            className="btn btn-outline-dark btn-sm mb-3"
-            to={`/product/${product._id}`}
-          >
-            See Details
-          </Link> */}
-          {/* <p className="fw-light text-secondary">{product.description}</p> */}
+
+          <div className="">
+            <span className="fw-light text-secondary">{product.brand}</span>
+            <Link
+              className="text-decoration-none text-dark"
+              to={`/product/${product._id}`}
+            >
+              <h5 className="mb-3">{product.name}</h5>
+            </Link>
+            <h5 className="mb-3">${Number(product.price).toFixed(2)}</h5>
+          </div>
         </div>
       </div>
     </div>

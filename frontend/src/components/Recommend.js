@@ -25,7 +25,7 @@ function Recommend(props) {
   return (
     <div className="mt-5">
       <h4 className="mb-4 fw-light text">You may also like</h4>
-      <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5">
+      <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
         {recommendItems.map((item) => (
           <Product key={item._id} product={item} />
         ))}

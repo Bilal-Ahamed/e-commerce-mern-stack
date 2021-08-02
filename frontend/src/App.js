@@ -66,13 +66,28 @@ function App() {
 
           {/* nav offcanvas content mobile */}
           <div
-            class="offcanvas offcanvas-start p-3"
+            class="offcanvas offcanvas-start fw-light"
             tabindex="-1"
             id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel"
           >
             <div class="offcanvas-header">
-              <img className="brand_logo" src="/images/h&m_logo.png" alt="" />
+              {/* <img className="brand_logo" src="/images/h&m_logo.png" alt="" /> */}
+              {!userInfo ? (
+                <Link
+                  className="d-flex align-items-center ps-2 text-secondary fw-light"
+                  to="/signin"
+                >
+                  <i className="far fa-user-circle fs-3 me-3"></i>
+                  <span className="fs-5">Sign In</span>
+                </Link>
+              ) : (
+                <div className="d-flex align-items-center ps-2 text-secondary fw-light">
+                  <i className="far fa-user-circle me-3 fs-3 "></i>
+                  <span className="fs-5">Welcome! {userInfo.name}</span>
+                </div>
+              )}
+
               <button
                 type="button"
                 class="btn-close text-reset"
@@ -80,18 +95,18 @@ function App() {
                 aria-label="Close"
               ></button>
             </div>
-            <div class="offcanvas-body fs-5">
+            <div class="offcanvas-body fs-5 ps-4">
               <ul className="">
                 <li className="">
                   <Link className="" to="/">
                     Home
                   </Link>
                 </li>
-                {/* <li className="nav-item">
-                <Link className="nav-link" to="/classification/men">
-                  Men
-                </Link>
-              </li> */}
+                <li className="">
+                  <Link className="" to="/classification/men">
+                    Men
+                  </Link>
+                </li>
                 <li className="">
                   <Link className="" to="/classification/women">
                     Women
@@ -212,14 +227,14 @@ function App() {
                   Home
                 </Link>
               </li>
-              {/* <li className="nav-item">
-                <Link className="nav-link" to="/classification/men">
-                  Men
-                </Link>
-              </li> */}
               <li className="nav-item">
                 <Link className="nav-link" to="/classification/women">
                   Women
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/classification/men">
+                  Men
                 </Link>
               </li>
               <li className="nav-item">

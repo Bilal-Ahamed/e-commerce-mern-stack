@@ -127,22 +127,20 @@ function HomeScreen() {
         {/* showcase btn */}
         <div className="row row-cols-1 row-cols-md-2">
           <div className="col mb-5">
-            <Link>
-              <Showcase
-                title={"Women"}
-                subtitle={"Look at the women's items"}
-                background="https://images.unsplash.com/photo-1494228766058-1430438d10fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
-              />
-            </Link>
+            <Showcase
+              title={"Women"}
+              subtitle={"Look at the women's items"}
+              background="https://images.unsplash.com/photo-1494228766058-1430438d10fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+              link={"/classification/women"}
+            />
           </div>
           <div className="col mb-5">
-            <Link>
-              <Showcase
-                title={"Men"}
-                subtitle={"Find clothes fit your need"}
-                background="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80"
-              />
-            </Link>
+            <Showcase
+              title={"Men"}
+              subtitle={"Find clothes fit your need"}
+              background="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80"
+              link={"classification/men"}
+            />
           </div>
         </div>
       </div>
@@ -158,7 +156,7 @@ function HomeScreen() {
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+          <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
             {products.map((product) => (
               <Product key={product._id} product={product} />
             ))}
