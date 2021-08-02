@@ -75,8 +75,10 @@ function App() {
               {/* <img className="brand_logo" src="/images/h&m_logo.png" alt="" /> */}
               {!userInfo ? (
                 <Link
-                  className="d-flex align-items-center ps-2 text-secondary fw-light"
+                  className="d-flex align-items-center ps-2 fw-light"
                   to="/signin"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
                 >
                   <i className="far fa-user-circle fs-3 me-3"></i>
                   <span className="fs-5">Sign In</span>
@@ -98,22 +100,42 @@ function App() {
             <div class="offcanvas-body fs-5 ps-4">
               <ul className="">
                 <li className="">
-                  <Link className="" to="/">
+                  <Link
+                    className=""
+                    to="/"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  >
                     Home
                   </Link>
                 </li>
                 <li className="">
-                  <Link className="" to="/classification/men">
+                  <Link
+                    className=""
+                    to="/classification/men"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  >
                     Men
                   </Link>
                 </li>
                 <li className="">
-                  <Link className="" to="/classification/women">
+                  <Link
+                    className=""
+                    to="/classification/women"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  >
                     Women
                   </Link>
                 </li>
                 <li className="">
-                  <Link className="" to="/favorites">
+                  <Link
+                    className=""
+                    to="/favorites"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  >
                     Favorites
                   </Link>
                 </li>
@@ -131,18 +153,34 @@ function App() {
                     </Link>
                     <ul id="user-collapse" className="collapse fs-6 ps-3">
                       <li>
-                        <Link className="" to="/profile">
+                        <Link
+                          className=""
+                          to="/profile"
+                          data-bs-dismiss="offcanvas"
+                          aria-label="Close"
+                        >
                           User Profile
                         </Link>
                       </li>
                       <li>
-                        <Link className="" to="/orderhistory">
+                        <Link
+                          className=""
+                          to="/orderhistory"
+                          data-bs-dismiss="offcanvas"
+                          aria-label="Close"
+                        >
                           Order History
                         </Link>
                       </li>
 
                       <li>
-                        <Link className="" to="#" onClick={signoutHandler}>
+                        <Link
+                          className=""
+                          to="#"
+                          onClick={signoutHandler}
+                          data-bs-dismiss="offcanvas"
+                          aria-label="Close"
+                        >
                           Sign Out
                         </Link>
                       </li>
@@ -151,12 +189,22 @@ function App() {
                 ) : (
                   <>
                     <li className="">
-                      <Link className="" to="/signin">
+                      <Link
+                        className=""
+                        to="/signin"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                      >
                         Sign In
                       </Link>
                     </li>
                     <li className="">
-                      <Link className="" to="/register">
+                      <Link
+                        className=""
+                        to="/register"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                      >
                         Register
                       </Link>
                     </li>
@@ -177,24 +225,44 @@ function App() {
                     </Link>
                     <ul className="collapse fs-6 ps-3" id="admin-collapse">
                       <li>
-                        <Link className="" to="/orderhistory">
+                        <Link
+                          className=""
+                          to="/orderhistory"
+                          data-bs-dismiss="offcanvas"
+                          aria-label="Close"
+                        >
                           Order History
                         </Link>
                       </li>
 
                       <li>
-                        <Link className="" to="/productlist">
+                        <Link
+                          className=""
+                          to="/productlist"
+                          data-bs-dismiss="offcanvas"
+                          aria-label="Close"
+                        >
                           Product List
                         </Link>
                       </li>
 
                       <li>
-                        <Link className="" to="/userlist">
+                        <Link
+                          className=""
+                          to="/userlist"
+                          data-bs-dismiss="offcanvas"
+                          aria-label="Close"
+                        >
                           User List
                         </Link>
                       </li>
                       <li>
-                        <Link className="" to="/#">
+                        <Link
+                          className=""
+                          to="/#"
+                          data-bs-dismiss="offcanvas"
+                          aria-label="Close"
+                        >
                           Orders
                         </Link>
                       </li>
@@ -203,7 +271,12 @@ function App() {
                 )}
 
                 <li className="mt-5">
-                  <Link className="cart" to="/cart">
+                  <Link
+                    className="cart"
+                    to="/cart"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  >
                     <ShoppingCartIcon style={{ fontSize: 28 }} /> Cart
                     {cartItems.length > 0 && (
                       <span className="badge">
